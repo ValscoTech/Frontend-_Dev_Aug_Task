@@ -16,7 +16,7 @@ const SearchNotes = () => {
                 <input type="number" className="form-control" placeholder="Max" />
               </div>
             </div>
-            
+
             <div className="mb-4">
               <label className="form-label">Note Type</label>
               <select className="form-select">
@@ -25,13 +25,14 @@ const SearchNotes = () => {
               </select>
             </div>
 
-            <button
+            <a href="#" target='_blank'><button
               className="btn btn-lg btn-primary mt-4"
               style={{ borderRadius: "15px", backgroundColor: "#A883C4", color: "white", fontWeight: "bold" }}
             >
               <img src={DownRightArrow} style={{ height: "2.5rem", marginRight: "5px" }} alt="Arrow Icon" />
-               Search Notes
+              Search Notes
             </button>
+            </a>
           </div>
 
           <div className="col-lg-6 text-center text-lg-end mt-4 mt-lg-0">

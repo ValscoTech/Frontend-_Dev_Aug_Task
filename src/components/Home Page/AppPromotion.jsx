@@ -12,7 +12,7 @@ const AppPromotion = () => {
                     <h2 className='text-black' style={{ fontSize: "3rem", marginTop: "2rem" }}>
                         Have you Tried our App? Notes on the GO
                     </h2>
-                    <button 
+                    <a href="#" target='_blank'><button 
                         className="btn btn-lg btn-primary mt-4" 
                         style={{ borderRadius: "15px", backgroundColor: "#A883C4" }}
                     >
@@ -23,6 +23,7 @@ const AppPromotion = () => {
                         /> 
                         Download RentSwap
                     </button>
+                    </a>
                 </div>
                 <div className='col-lg-6 text-center'>
                     <img 
