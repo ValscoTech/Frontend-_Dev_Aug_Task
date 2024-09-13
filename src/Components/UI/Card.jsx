@@ -1,0 +1,28 @@
+import React from "react";
+
+function Card({ className, theme = "default", children }) {
+	const styles = {
+		primary: "bg-primary-light dark:bg-primary-dark border-primary-light",
+		secondary:
+			"bg-secondary-light dark:bg-secondary-dark border-secondary-light",
+		tertiary:
+			"bg-tertiary-light dark:bg-tertiary-dark border-tertiary-light",
+		default:
+			"bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-700 text-black dark:text-white",
+		xs: "max-w-sm",
+		sm: "max-w-md",
+		md: "max-w-lg",
+		lg: "max-w-xl",
+		xl: "max-w-2xl",
+	};
+
+	return (
+		<div
+			className={`max-w-sm border rounded-lg shadow p-4 ${styles[theme]} ${className}`}
+		>
+			{children}
+		</div>
+	);
+}
+
+export default Card;
