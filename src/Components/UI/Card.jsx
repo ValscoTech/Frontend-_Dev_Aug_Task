@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ className, theme = "default", children }) {
+function Card({ className, theme = "default", children, size = "md" }) {
 	const styles = {
 		primary: "bg-primary-light dark:bg-primary-dark border-primary-light",
 		secondary:
@@ -18,7 +18,7 @@ function Card({ className, theme = "default", children }) {
 
 	return (
 		<div
-			className={`max-w-sm border rounded-lg shadow p-4 ${styles[theme]} ${className}`}
+			className={`max-w-sm w-full h-full border rounded-lg shadow p-4 ${styles[theme]} ${styles[size]} ${className}`}
 		>
 			{children}
 		</div>

@@ -1,7 +1,9 @@
 import React from "react";
 
 function Input({
-	className,
+	className = "",
+	inputClassName = "",
+	labelClassName = "",
 	variant = "filled",
 	type = "text",
 	theme = "primary",
@@ -62,12 +64,12 @@ function Input({
 				type={type}
 				id={id}
 				name={name}
-				className={`block peer w-full border-slate-300 appearance-none focus:outline-none focus:ring-0  border-b-2 ${styles[variant][0]} ${styles[theme][0]} ${styles[size]}`}
+				className={`block peer w-full border-slate-300 appearance-none focus:outline-none focus:ring-0  border-b-2 ${styles[variant][0]} ${styles[theme][0]} ${styles[size]} ${inputClassName}`}
 				placeholder=" "
 			/>
 			<label
 				htmlFor={id}
-				className={`absolute duration-300 transform scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-focus:scale-75 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto ${styles[variant][1]} ${styles[theme][1]}`}
+				className={`absolute duration-300 transform scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-focus:scale-75 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto ${styles[variant][1]} ${styles[theme][1]} ${labelClassName}`}
 			>
 				{placeholder}
 			</label>

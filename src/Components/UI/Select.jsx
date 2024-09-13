@@ -8,7 +8,7 @@ function Select({
 	theme = "primary",
 	size = "md",
 	label = "Select an option:",
-	options,
+	options = [],
 }) {
 	const styles = {
 		static: "py-2.5 px-2.5 border-0",

@@ -42,7 +42,7 @@ function Button({
 		<button
 			name={name}
 			id={id}
-			className={`w-full font-medium hover:shadow-lg duration-300 outline-none ring-0 focus:ring-2 focus:outline-none px-5 py-2.5 me-2 mb-2 text-center ${btnStyles[variant]} ${btnStyles[theme]} ${btnStyles[size]} ${className}`}
+			className={`w-full font-medium hover:shadow-lg duration-300 outline-none ring-0 focus:ring-2 focus:outline-none px-5 py-2.5 text-center ${btnStyles[variant]} ${btnStyles[theme]} ${btnStyles[size]} ${className}`}
 		>
 			{children}
 			{text}
