@@ -1,0 +1,62 @@
+@font-face {
+    font-family: "ClashDisplayVariable";
+    src: url("./fonts/ClashDisplay-Medium.woff") format("woff");
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Button hover effect */
+.offer-btn {
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  transition: all 0.3s ease-in-out;
+}
+
+.offer-btn:hover {
+  background-color: yellowgreen;
+  color: black;
+}
+
+.rent-btn {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  transition: all 0.3s ease-in-out;
+}
+
+.rent-btn:hover {
+  background-color: yellowgreen;
+  color: black;
+  border: 2px solid black;
+}
+
+/* Navbar links hover effect */
+.nav-link:hover {
+  color: yellowgreen !important;
+}
+
+/* Mobile responsiveness (when screen size is smaller than lg) */
+@media (max-width: 992px) {
+  .navbar-nav {
+      text-align: center;
+  }
+
+  .navbar-collapse {
+      background-color: black;
+  }
+
+  .nav-item {
+      padding: 0.5rem 0;
+  }
+
+  .offer-btn, .rent-btn {
+      margin-top: 1rem;
+      width: 100%;
+  }
+}
