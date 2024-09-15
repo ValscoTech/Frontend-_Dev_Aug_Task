@@ -2,6 +2,7 @@ import React from "react";
 
 function Button({
 	className,
+	type = "button",
 	variant = "filled",
 	theme = "primary",
 	name,
@@ -9,6 +10,7 @@ function Button({
 	text,
 	size = "md",
 	children,
+	onClick = () => {},
 }) {
 	const btnStyles = {
 		outlined: "hover:text-white border-2 rounded-lg",
@@ -28,7 +30,7 @@ function Button({
 		tertiary: `${
 			variant == "outlined"
 				? "hover:bg-tertiary-dark dark:hover:bg-tertiary-light text-tertiary border-tertiary-dark dark:border-tertiary-light"
-				: "bg-tertiary focus:bg-tertiary-dark dark:focus:bg-tertiary-light text-white"
+				: "bg-tertiary focus:bg-tertiary-dark dark:focus:bg-tertiary-light text-slate-600"
 		} focus:ring-tertiary`,
 
 		xs: "text-xs",
@@ -42,7 +44,9 @@ function Button({
 		<button
 			name={name}
 			id={id}
-			className={`w-full font-medium hover:shadow-lg duration-300 outline-none ring-0 focus:ring-2 focus:outline-none px-5 py-2.5 text-center ${btnStyles[variant]} ${btnStyles[theme]} ${btnStyles[size]} ${className}`}
+			type={type}
+			className={`w-full active:scale-95 origin-bottom font-medium hover:shadow-lg duration-300 outline-none ring-0 focus:ring-2 focus:outline-none px-5 py-2.5 text-center ${btnStyles[variant]} ${btnStyles[theme]} ${btnStyles[size]} ${className}`}
+			onClick={onClick}
 		>
 			{children}
 			{text}

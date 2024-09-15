@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import { LuTrash2 } from "react-icons/lu";
 
-export default function DragAndDrop({ acceptedFileTypes }) {
+export default function DragAndDrop({ acceptedFileTypes, addAlert }) {
 	const [dragActive, setDragActive] = useState(false);
 	const inputRef = useRef(null);
 	const [files, setFiles] = useState([]);
@@ -15,11 +15,14 @@ export default function DragAndDrop({ acceptedFileTypes }) {
 
 	function handleChange(e) {
 		e.preventDefault();
-		console.log("File has been added");
 		if (e.target.files && e.target.files[0]) {
-			console.log(e.target.files);
 			for (let i = 0; i < e.target.files["length"]; i++) {
+				if (files.some((f) => f.name === e.target.files[i].name)) {
+					addAlert("No duplicate files are allowed.", "error");
+					return;
+				}
 				setFiles((prevState) => [...prevState, e.target.files[i]]);
+				addAlert("File uploaded successfully.", "success")
 			}
 		}
 	}
@@ -36,14 +39,31 @@ export default function DragAndDrop({ acceptedFileTypes }) {
 		e.preventDefault();
 		e.stopPropagation();
 		setDragActive(false);
-		if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-			for (let i = 0; i < e.dataTransfer.files["length"]; i++) {
-				setFiles((prevState) => [
-					...prevState,
-					e.dataTransfer.files[i],
-				]);
+
+		const newFiles = Array.from(e.dataTransfer.files).filter((file) =>
+			acceptedFileTypes.includes(
+				"." + file.name.split(".").pop().toLowerCase(),
+			),
+		);
+		if (newFiles.length !== e.dataTransfer.files.length) {
+			addAlert(
+				"Allowed file types: " +
+					acceptedFileTypes
+						.map((type) => type.slice(1))
+						.join(", ")
+						.toUpperCase(),
+				"error",
+			);
+		}
+
+		for (let file of e.dataTransfer.files) {
+			if (newFiles.some((f) => f.name === file.name)) {
+				addAlert("No duplicate files are allowed.", "error");
+				return;
 			}
 		}
+
+		setFiles((prevState) => [...prevState, ...newFiles]);
 	}
 
 	function handleDragLeave(e) {
@@ -78,7 +98,7 @@ export default function DragAndDrop({ acceptedFileTypes }) {
 
 	return (
 		<>
-			<form
+			<div
 				className={`text-slate-700 dark:text-slate-100 ${
 					dragActive
 						? "bg-transparent border-slate-300 opacity-80 border-dashed border-4 border-spacing-1"
@@ -86,7 +106,6 @@ export default function DragAndDrop({ acceptedFileTypes }) {
 				} 
 				rounded-lg text-xs min-h-40 text-center flex flex-col items-center justify-center`}
 				onDragEnter={handleDragEnter}
-				onSubmit={(e) => e.preventDefault()}
 				onDrop={handleDrop}
 				onDragLeave={handleDragLeave}
 				onDragOver={handleDragOver}
@@ -107,7 +126,7 @@ export default function DragAndDrop({ acceptedFileTypes }) {
 					onClick={openFileExplorer}
 				/>
 				<p className="text-sm py-1">Drag and drop your files here</p>
-			</form>
+			</div>
 
 			<div className="flex flex-col items-center pr-0.5 my-1 gap-1 h-48 overflow-y-auto">
 				{files.map((file, idx) => (
@@ -125,12 +144,6 @@ export default function DragAndDrop({ acceptedFileTypes }) {
 					</div>
 				))}
 			</div>
-			{/* <button
-          className="bg-black rounded-lg p-2 mt-3 w-auto"
-          onClick={handleSubmitFile}
-        >
-          <span className="p-2 text-white">Submit</span>
-        </button> */}
 		</>
 	);
 }

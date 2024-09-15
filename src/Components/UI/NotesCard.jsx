@@ -9,24 +9,33 @@ function NotesCard({ note, theme = "default" }) {
 		tertiary: "bg-tertiary-light",
 	};
 	return (
-		<Card size="sm" theme={theme}>
+		<Card className="duration-300" size="sm" theme={theme}>
 			<div className="flex flex-col gap-2 justify-end">
 				<div className="flex items-center gap-5">
-					<h4 className="text-lg font-light">{note.courseCode}</h4>
+					<h4 className="text-lg font-light">{note.code.toUpperCase()}</h4>
 					<div className="font-normal px-8 rounded-md bg-primary">
-						{note.schoolName}
+						{note.school.toUpperCase()}
 					</div>
 				</div>
 				<div className="flex flex-col">
 					<div className="flex items-center gap-2 justify-between">
 						<h3 className="text-xl font-medium">
-							{note.courseName}
+							{note.title
+								.split(" ")
+								.map(
+									(word) =>
+										word.charAt(0).toUpperCase() +
+										word.slice(1).toLowerCase(),
+								)
+								.join(" ")}
 						</h3>
-						<div className="p-2 rounded-xl outline outline-1 outline-black gap-4">
+						<div className="p-2 rounded-xl outline outline-1 outline-black dark:outline-white gap-4">
 							<div className="flex items-center gap-2">
-								<p className="text-sm text-wrap max-w-min">Modules Covered</p>
+								<p className="text-sm text-wrap max-w-min">
+									Modules Covered
+								</p>
 								<p className="text-4xl font-medium">
-									{note.modulesCovered}
+									{note.module}
 								</p>
 							</div>
 						</div>
@@ -34,8 +43,8 @@ function NotesCard({ note, theme = "default" }) {
 				</div>
 			</div>
 			<img
-				className="object-contain m-auto h-36 md:h-44 lg:h-52 xl:h-60"
-				src={note.previewImage}
+				className="object-contain m-auto min-h-40 max-h-60"
+				src={note.preview}
 				alt="Notes"
 			/>
 		</Card>
