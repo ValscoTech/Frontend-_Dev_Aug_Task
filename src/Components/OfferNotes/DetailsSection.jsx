@@ -1,7 +1,7 @@
 import Input from "../UI/Input";
 import Select from "../UI/Select";
 
-function DetailsSection() {
+function DetailsSection({ setFormData }) {
 	const modules = [
 		{ key: 1, value: "Module 1" },
 		{ key: 2, value: "Module 2" },
@@ -18,10 +18,16 @@ function DetailsSection() {
 		{ key: "scope", value: "SCOPE" },
 		{ key: "sense", value: "SENSE" },
 		{ key: "score", value: "SCORE" },
-		{ key: "spark", value: "SPARK" },
-
+		{ key: "sas", value: "SAS" },
 	];
 
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	};
 
 	return (
 		<div className="flex flex-col justify-center lg:flex-col gap-8 w-full lg:w-1/3">
@@ -29,17 +35,37 @@ function DetailsSection() {
 				variant="static"
 				name="title"
 				id="title"
+				onChange={handleChange}
 				placeholder="Title"
 			/>
-			<Input variant="static" name="code" id="code" placeholder="Code" />
+			<Input
+				variant="static"
+				name="code"
+				id="code"
+				onChange={handleChange}
+				placeholder="Code"
+			/>
 			<Input
 				variant="static"
 				name="coursename"
 				id="coursename"
+				onChange={handleChange}
 				placeholder="Course Name"
 			/>
-			<Select label="Select Module" name="module" id="module" options={modules} />
-			<Select label="Select School" name="school" id="school" options={schools} />
+			<Select
+				label="Select Module"
+				name="module"
+				id="module"
+				options={modules}
+				onChange={handleChange}
+			/>
+			<Select
+				label="Select School"
+				name="school"
+				id="school"
+				options={schools}
+				onChange={handleChange}
+			/>
 		</div>
 	);
 }
