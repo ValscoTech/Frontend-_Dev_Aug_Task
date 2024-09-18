@@ -11,10 +11,7 @@ function Select({
 	options = [],
 	onChange,
 }) {
-	options = [
-		{ key: "", value: "Select an option" },
-		...options,
-	]
+	options = [{ key: "", value: "Select an option" }, ...options];
 
 	const styles = {
 		static: "py-2.5 px-2.5 border-0",

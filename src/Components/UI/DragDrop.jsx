@@ -22,7 +22,7 @@ export default function DragAndDrop({ acceptedFileTypes, addAlert }) {
 					return;
 				}
 				setFiles((prevState) => [...prevState, e.target.files[i]]);
-				addAlert("File uploaded successfully.", "success")
+				addAlert("File uploaded successfully.", "success");
 			}
 		}
 	}

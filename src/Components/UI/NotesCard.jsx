@@ -12,7 +12,9 @@ function NotesCard({ note, theme = "default" }) {
 		<Card className="duration-300" size="sm" theme={theme}>
 			<div className="flex flex-col gap-2 justify-end">
 				<div className="flex items-center gap-5">
-					<h4 className="text-lg font-light">{note.code.toUpperCase()}</h4>
+					<h4 className="text-lg font-light">
+						{note.code.toUpperCase()}
+					</h4>
 					<div className="font-normal px-8 rounded-md bg-primary">
 						{note.school.toUpperCase()}
 					</div>

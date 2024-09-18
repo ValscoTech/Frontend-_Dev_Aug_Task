@@ -10,6 +10,7 @@ function Input({
 	name,
 	id,
 	placeholder = "Enter a value",
+	icon="",
 	value,
 	size = "md",
 	onChange,
@@ -72,12 +73,15 @@ function Input({
 				onChange={onChange}
 			/>
 			{variant != "outlined" && (
-				<span className={`absolute bottom-0 left-0 w-0 h-[3px] peer-focus:w-full transition-all duration-300 ease-in-out bg-${theme}`}></span>
+				<span
+					className={`absolute bottom-0 left-0 w-0 h-[3px] peer-focus:w-full transition-all duration-300 ease-in-out bg-${theme}`}
+				></span>
 			)}
 			<label
 				htmlFor={id}
-				className={`absolute duration-300 transform scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-focus:scale-75 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto ${styles[variant][1]} ${styles[theme][1]} ${labelClassName}`}
+				className={`absolute flex justify-center items-center gap-2 duration-300 transform scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-focus:scale-75 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto ${styles[variant][1]} ${styles[theme][1]} ${labelClassName}`}
 			>
+				{icon}
 				{placeholder}
 			</label>
 		</div>
