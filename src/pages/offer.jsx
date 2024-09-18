@@ -118,16 +118,19 @@ function Offer() {
 			</div>
 
 			<div className="fixed top-16 right-4 w-96 sm:w-7/12 lg:w-5/12 grid grid-cols-1 gap-4">
-				{alerts.slice().reverse().map((alert, index) => (
-					<Alert
-						key={alert.id}
-						id={index}
-						message={alert.message}
-						variant={alert.variant}
-						show={alert.show}
-						onClose={() => handleAlertClose(alert.id)}
-					/>
-				))}
+				{alerts
+					.slice()
+					.reverse()
+					.map((alert, index) => (
+						<Alert
+							key={alert.id}
+							id={index}
+							message={alert.message}
+							variant={alert.variant}
+							show={alert.show}
+							onClose={() => handleAlertClose(alert.id)}
+						/>
+					))}
 			</div>
 		</>
 	);
