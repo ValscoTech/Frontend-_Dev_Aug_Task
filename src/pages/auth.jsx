@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RegisterForm from "../Components/Auth/RegisterForm";
 import LoginForm from "../Components/Auth/LoginForm";
 import Alert from "../Components/UI/Alert";
 function Auth() {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const [alerts, setAlerts] = useState([]);
 	const [state, setState] = useState("login");
 
