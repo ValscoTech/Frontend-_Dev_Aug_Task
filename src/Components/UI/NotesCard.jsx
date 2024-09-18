@@ -45,7 +45,7 @@ function NotesCard({ note, theme = "default" }) {
 				</div>
 			</div>
 			<img
-				className="object-contain m-auto min-h-40 max-h-60"
+				className="object-contain mt-3 rounded m-auto min-h-40 max-h-60"
 				src={note.preview}
 				alt="Notes"
 			/>

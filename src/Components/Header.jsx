@@ -11,7 +11,7 @@ const Header = () => {
 		<header id="header">
 			<nav className="bg-stone-100 dark:bg-black shadow-md text-black dark:text-white px-4 py-2.5">
 				<div className="container flex flex-wrap justify-between items-center w-full mx-auto">
-					<NavLink to="/" className="flex items-center">
+					<NavLink to="" className="flex items-center">
 						<img
 							src="/favicon.svg" // Replace with your logo image path
 							alt="NoteSwap"

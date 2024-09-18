@@ -115,7 +115,6 @@ const Footer = ({ smoothScroll }) => {
 								connect@valsco.com
 							</NavLink>
 						</div>
-						<area shape="" coords="" href="" alt="" />
 					</div>
 				</div>
 				<div className="h-[2px] rounded-full bg-stone-600 dark:bg-white"></div>

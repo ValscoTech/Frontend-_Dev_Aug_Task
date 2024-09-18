@@ -7,6 +7,8 @@ function Input({
 	variant = "filled",
 	type = "text",
 	theme = "primary",
+	min,
+	max,
 	name,
 	id,
 	placeholder = "Enter a value",
@@ -68,6 +70,8 @@ function Input({
 				type={type}
 				id={id}
 				name={name}
+				min={min}
+				max={max}
 				placeholder=" "
 				value={value}
 				onChange={onChange}
