@@ -45,8 +45,8 @@ const SearchNotes = () => {
 						label="Type"
 						options={[
 							{
-								id: "class",
-								value: "class",
+								id: "className",
+								value: "className",
 								title: "Class Notes",
 							},
 							{

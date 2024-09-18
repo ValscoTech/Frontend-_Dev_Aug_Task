@@ -31,15 +31,15 @@ function Selector({
 							id={option.id}
 							name={name}
 							value={option.value}
-							class="hidden peer"
+							className="hidden peer"
 							
 						/>
 						<label
-							for={option.id}
-							class={`inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700  hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 ${styles[theme]}`}
+							htmlFor={option.id}
+							className={`inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700  hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 ${styles[theme]}`}
 						>
-							<div class="block">
-								<div class="w-full text-lg font-semibold">
+							<div className="block">
+								<div className="w-full text-lg font-semibold">
 									{option.title}
 								</div>
 								{option.content ? <p>{option.content}</p> : null}

@@ -59,6 +59,7 @@ const Header = () => {
 								className={({ isActive }) =>
 									isActive ? "text-secondary" : ""
 								}
+								onClick={() => setDropdown(!dropdown)}
 							>
 								Home
 							</NavLink>
@@ -67,6 +68,7 @@ const Header = () => {
 								className={({ isActive }) =>
 									isActive ? "text-secondary" : ""
 								}
+								onClick={() => setDropdown(!dropdown)}
 							>
 								Notes
 							</NavLink>
@@ -75,15 +77,22 @@ const Header = () => {
 								className={({ isActive }) =>
 									isActive ? "text-secondary" : ""
 								}
+								onClick={() => setDropdown(!dropdown)}
 							>
 								Blogs
 							</NavLink>
 							<div className="flex gap-5 lg:gap-10">
 								<li className="active:scale-75 duration-100">
-									<FaUserCircle size={25} />
+									<FaUserCircle
+										onClick={() => setDropdown(!dropdown)}
+										size={25}
+									/>
 								</li>
 								<li className="active:scale-75 duration-100">
-									<FaSearch size={25} />
+									<FaSearch
+										onClick={() => setDropdown(!dropdown)}
+										size={25}
+									/>
 								</li>
 							</div>
 						</ul>

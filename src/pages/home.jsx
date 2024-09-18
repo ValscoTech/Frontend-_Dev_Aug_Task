@@ -40,7 +40,7 @@ const Home = () => {
 	];
 
 	return (
-		<div className="container mx-auto font-sans px-10">
+		<div className="container mx-auto p-5">
 			<Hero />
 			<AppPromotion />
 			<DisplaySection data={notes} />

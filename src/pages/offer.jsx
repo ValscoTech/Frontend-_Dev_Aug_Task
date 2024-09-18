@@ -103,7 +103,7 @@ function Offer() {
 
 	return (
 		<>
-			<div className="min-h-screen mx-auto relative container p-4">
+			<div className="min-h-screen mx-auto relative container p-5">
 				<h2 className="text-4xl py-5 font-bold dark:text-white">
 					Offer Notes
 				</h2>
