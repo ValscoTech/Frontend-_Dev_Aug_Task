@@ -10,9 +10,9 @@ export default {
 					dark: "#A673E7",
 				},
 				secondary: {
-					light: "#E2B5A2",
-					DEFAULT: "#DDA892",
-					dark: "#D89B83",
+					light: "#5673DC",
+					DEFAULT: "#3457D5",
+					dark: "#2A4DCB",
 				},
 				tertiary: {
 					light: "#79DDF6",
@@ -22,6 +22,7 @@ export default {
 			},
 			fontFamily: {
 				sans: ["'Clash Display'", "sans-serif"],
+				popins: ["Poppins", "sans-serif"],
 			},
 		},
 	},
