@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DetailsSection from "../Components/OfferNotes/DetailsSection";
 import UploadSection from "../Components/OfferNotes/UploadSection";
 import DisplaySection from "../Components/OfferNotes/DisplaySection";
 import Alert from "../Components/UI/Alert";
 
 function Offer() {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const [offers, setOffers] = useState([
 		{
 			code: "CSE2005",
@@ -13,7 +17,7 @@ function Offer() {
 			module: 12,
 			school: "SCOPE",
 			price: "100",
-			preview: "./images/notes.png",
+			preview: "./images/notes.jpg",
 		},
 		{
 			code: "CSE2002",
@@ -22,7 +26,7 @@ function Offer() {
 			module: 7,
 			school: "SENSE",
 			price: "100",
-			preview: "./images/notes.png",
+			preview: "./images/notes.jpg",
 		},
 		{
 			code: "CSE2009",
@@ -31,7 +35,7 @@ function Offer() {
 			module: 6,
 			school: "SCORE",
 			price: "100",
-			preview: "./images/notes.png",
+			preview: "./images/notes.jpg",
 		},
 	]);
 	const [formData, setFormData] = useState({
@@ -41,7 +45,7 @@ function Offer() {
 		module: "",
 		school: "",
 		price: "",
-		preview: "./images/notes.png",
+		preview: "./images/notes.jpg",
 	});
 
 	const [alerts, setAlerts] = useState([]);
