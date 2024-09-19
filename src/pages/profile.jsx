@@ -1,5 +1,11 @@
+import { useEffect } from "react";
+
 function Profile() {
-	return <div>Account Details</div>;
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
+	return <div className="container mx-auto p-5">Account Details</div>;
 }
 
 export default Profile;

@@ -22,6 +22,27 @@ function Blogs() {
 		},
 	];
 
+	const feeds = [
+		{
+			title: "Enhancing Law Making Efficiency with...",
+			author: "@Nirabhi Srivastava",
+			subtitle:
+				"In an era marked by rapid technological advancements, it comes as no surprise that artificial intelligence (AI) is revolutionizing various industries. One sector that stands to benefit immensely from AI is governance and law making. With its ability",
+		},
+		{
+			title: "Enhancing Law Making Efficiency with...",
+			author: "@Nishita Jaiswal",
+			subtitle:
+				"In an era marked by rapid technological advancements, it comes as no surprise that artificial intelligence (AI) is revolutionizing various industries. One sector that stands to benefit immensely from AI is governance and law making. With its ability",
+		},
+		{
+			title: "Implementing a National Legal Case...",
+			author: "@Preet Singh",
+			subtitle:
+				"In an era marked by rapid technological advancements, it comes as no surprise that artificial intelligence (AI) is revolutionizing various industries. One sector that stands to benefit immensely from AI is governance and law making. With its ability",
+		},
+	];
+
 	return (
 		<div className="container flex flex-col gap-5 mx-auto p-5 text-black dark:text-white">
 			<h2 className="text-4xl py-5 font-bold dark:text-white">
@@ -39,8 +60,8 @@ function Blogs() {
 				alt=""
 			/>
 
-			<div className="flex gap-10 mb-16">
-				<div className="text-justify flex flex-col gap-10 text-lg w-3/4">
+			<div className="flex flex-col lg:flex-row gap-10 mb-16">
+				<div className="text-justify flex flex-col gap-10 text-lg lg:w-3/4">
 					<p>
 						Enhancing Law making Efficiency with AI: Paving the Way
 						for Smarter Governance. In an era marked by rapid
@@ -143,11 +164,11 @@ function Blogs() {
 						working of the system.
 					</p>
 				</div>
-				<div className="lex flex-col w-1/4 gap-3">
+				<div className="lex flex-col mx-auto lg:w-1/4 gap-3">
 					<PopularPosts posts={popularPosts} />
 				</div>
 			</div>
-			<MoreFeed />
+			<MoreFeed feeds={feeds} />
 		</div>
 	);
 }

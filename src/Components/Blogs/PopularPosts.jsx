@@ -27,7 +27,7 @@ function PopularPosts({ posts }) {
 					</div>
 				))}
 				<Card
-					className="mt-6 justify-center text-center items-center flex flex-col gap-10"
+					className="mt-6 mx-auto justify-center text-center items-center flex flex-col gap-10"
 					theme="primary"
 				>
 					<h3 className="text-lg">Get More Done Together With Us</h3>
