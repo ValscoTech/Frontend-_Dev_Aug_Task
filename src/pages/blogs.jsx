@@ -60,8 +60,8 @@ function Blogs() {
 				alt=""
 			/>
 
-			<div className="flex flex-col lg:flex-row gap-10 mb-16">
-				<div className="text-justify flex flex-col gap-10 text-lg lg:w-3/4">
+			<div className="flex flex-col xl:flex-row gap-10 mb-16">
+				<div className="text-justify flex flex-col gap-10 text-lg xl:w-3/4">
 					<p>
 						Enhancing Law making Efficiency with AI: Paving the Way
 						for Smarter Governance. In an era marked by rapid
@@ -164,7 +164,7 @@ function Blogs() {
 						working of the system.
 					</p>
 				</div>
-				<div className="lex flex-col mx-auto lg:w-1/4 gap-3">
+				<div className="lex flex-col mx-auto xl:w-1/4 gap-3">
 					<PopularPosts posts={popularPosts} />
 				</div>
 			</div>

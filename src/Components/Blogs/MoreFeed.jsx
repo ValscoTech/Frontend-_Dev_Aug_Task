@@ -13,7 +13,7 @@ function MoreFeed({ feeds }) {
 				{feeds.map((feed, index) => (
 					<Card
 						key={index}
-						className="!max-w-lg mx-auto text-center justify-between !bg-zinc-200 !text-slate-800 !h-72 flex flex-col gap-3"
+						className="!max-w-md lg:!max-w-lg mx-auto text-center justify-between !bg-zinc-200 !text-slate-800 !h-80 lg:!h-96 xl:!h-72 flex flex-col gap-3"
 					>
 						<div className="flex flex-col gap-2">
 							<h3 className="text-lg md:text-xl lg:text-2xl font-medium">
@@ -23,7 +23,7 @@ function MoreFeed({ feeds }) {
 						</div>
 						<div className="flex flex-col gap-2">
 							<p className="text-sm">{feed.author}</p>
-							<Button className="w-fit mx-auto">Read More</Button>
+							<Button className="!w-fit !mx-auto">Read More</Button>
 						</div>
 					</Card>
 				))}
