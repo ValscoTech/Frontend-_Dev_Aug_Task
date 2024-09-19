@@ -24,10 +24,10 @@ function Blogs() {
 
 	const feeds = [
 		{
-			title: "Enhancing Law Making Efficiency with...",
-			author: "@Nirabhi Srivastava",
+			title: "Creating a National Legal Ca...",
+			author: "@Gautam Singh",
 			subtitle:
-				"In an era marked by rapid technological advancements, it comes as no surprise that artificial intelligence (AI) is revolutionizing various industries. One sector that stands to benefit immensely from AI is governance and law making. With its ability",
+				"Ion collection is now more important than ever in the current digital age. Lawyers can improve capacity to serve their clients by enhancing their ability to collect and analyze client information, streamline case management, and improve communication.",
 		},
 		{
 			title: "Enhancing Law Making Efficiency with...",
