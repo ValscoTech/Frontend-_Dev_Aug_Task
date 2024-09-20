@@ -3,6 +3,7 @@ import { LuMail, LuUser2, LuLock } from "react-icons/lu";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { useState } from "react";
+import { useGoogleLogin } from '@react-oauth/google';
 
 import Button from "../UI/Button";
 import Input from "../UI/Input";
@@ -12,6 +13,12 @@ import Checkbox from "../UI/Checkbox";
 const LoginForm = ({ setState, addAlert }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [rememberMe, setRememberMe] = useState(false);
+
+	const loginWithGoogle = useGoogleLogin({
+		onSuccess: tokenResponse => console.log(tokenResponse),
+		onError: () => console.log('Login Failed'),
+	  });
 
 	const handleLogin = (e) => {
 		e.preventDefault();
@@ -36,6 +43,8 @@ const LoginForm = ({ setState, addAlert }) => {
 						labelClassName="!text-slate-700 !bg-slate-100"
 						variant="outlined"
 						icon={<LuMail />}
+						value={email}
+                		onChange={(e) => setEmail(e.target.value)}
 					/>
 
 					<Input
@@ -47,6 +56,8 @@ const LoginForm = ({ setState, addAlert }) => {
 						labelClassName="!text-slate-700 !bg-slate-100"
 						variant="outlined"
 						icon={<LuLock />}
+						value={password}
+                		onChange={(e) => setPassword(e.target.value)}
 					/>
 
 					<div className="flex flex-col gap-2 mt-4">
@@ -54,6 +65,8 @@ const LoginForm = ({ setState, addAlert }) => {
 							id="remember"
 							name="remember"
 							label="Remember me"
+							checked={rememberMe}
+                			onChange={() => setRememberMe(!rememberMe)}
 						/>
 						<p className="text-sm text-slate-500">
 							Forgot your password?{" "}
@@ -95,6 +108,7 @@ const LoginForm = ({ setState, addAlert }) => {
 						variant="filled"
 						theme="monochrome"
 						size="large"
+						onClick={() => loginWithGoogle()}
 					>
 						<FcGoogle />
 						Continue with Google
