@@ -42,7 +42,7 @@ function UploadSection({ formData, setFormData, addAlert }) {
 						Upload your files
 					</h3>
 					<DragDrop
-						acceptedFileTypes={[".pdf"]}
+						acceptedFileTypes={[".png", ".jpg", ".jpeg"]}
 						addAlert={addAlert}
 					/>
 					<div className="relative sm:hidden flex w-full gap-2">

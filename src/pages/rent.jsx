@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Calender from "../Components/UI/Calender";
 import DisplaySection from "../Components/OfferNotes/DisplaySection";
 import Button from "../Components/UI/Button";
-import Card from "../Components/UI/Card";
 
 function Rent({
 	title = "Computation of Maths",
@@ -51,21 +50,19 @@ function Rent({
 			</h2>
 			<div className="flex flex-col w-full lg:flex-row justify-center items-center my-16">
 				<div className="flex justify-center my-10 w-full lg:w-1/2">
-					<Card className="!max-w-lg">
-						<div className="text-slate-700 dark:text-slate-300 *:text-xl *:py-3">
-							<p>Title: {title}</p>
-							<p>Code: {code}</p>
-							<p>Price per module: {price}Rs</p>
-							<p>Preview:</p>
-							<div className="max-w-sm mx-auto mb-2 bg-slate-300 rounded-lg p-2">
-								<img
-									className="rounded"
-									src={preview}
-									alt="Preview"
-								/>
-							</div>
+					<div className="text-slate-700 dark:text-slate-300 *:text-xl *:py-3">
+						<p>Title: {title}</p>
+						<p>Code: {code}</p>
+						<p>Price per module: {price}Rs</p>
+						<p>Preview:</p>
+						<div className="max-w-sm mx-auto mb-2 bg-slate-300 rounded-lg ml-5 m-2 p-2">
+							<img
+								className="rounded h-96"
+								src={preview}
+								alt="Preview"
+							/>
 						</div>
-					</Card>
+					</div>
 				</div>
 
 				<div className="flex flex-col items-center w-full lg:w-1/2">

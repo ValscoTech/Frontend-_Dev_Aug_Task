@@ -99,10 +99,10 @@ export default function DragAndDrop({ acceptedFileTypes, addAlert }) {
 	return (
 		<>
 			<div
-				className={`text-slate-700 dark:text-slate-100 ${
+				className={`text-slate-700 ${
 					dragActive
 						? "bg-transparent border-slate-300 opacity-80 border-dashed border-4 border-spacing-1"
-						: "bg-zinc-100 dark:bg-black"
+						: "bg-zinc-100"
 				} 
 				rounded-lg text-xs min-h-40 text-center flex flex-col items-center justify-center`}
 				onDragEnter={handleDragEnter}
@@ -132,7 +132,7 @@ export default function DragAndDrop({ acceptedFileTypes, addAlert }) {
 				{files.map((file, idx) => (
 					<div
 						key={idx}
-						className="flex flex-row w-full justify-between items-center text-sm rounded-md bg-transparent p-2 text-slate-800 dark:text-white"
+						className="flex flex-row w-full justify-between items-center text-sm rounded-md bg-transparent p-2 text-slate-800"
 					>
 						<span>{handleFileName(file.name, 42)}</span>
 						<span

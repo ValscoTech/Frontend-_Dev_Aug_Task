@@ -9,10 +9,10 @@ function NotesCard({ note, theme = "default" }) {
 		tertiary: "bg-tertiary-light",
 	};
 	return (
-		<Card className="duration-300" size="sm" theme={theme}>
+		<Card className="duration-300 flex flex-col gap-3" size="sm" theme={theme}>
 			<div className="flex flex-col gap-2 justify-end">
 				<div className="flex items-center gap-5">
-					<h4 className="text-lg font-light">
+					<h4 className="text-xl font-light">
 						{note.code.toUpperCase()}
 					</h4>
 					<div className="font-normal px-8 rounded-md bg-primary">
@@ -31,7 +31,7 @@ function NotesCard({ note, theme = "default" }) {
 								)
 								.join(" ")}
 						</h3>
-						<div className="p-2 rounded-xl outline outline-1 outline-black dark:outline-white gap-4">
+						<div className="p-2 rounded-xl outline outline-1 outline-black gap-4">
 							<div className="flex items-center gap-2">
 								<p className="text-sm text-wrap max-w-min">
 									Modules Covered
@@ -44,11 +44,18 @@ function NotesCard({ note, theme = "default" }) {
 					</div>
 				</div>
 			</div>
-			<img
-				className="object-contain mt-3 rounded m-auto min-h-40 max-h-60"
-				src={note.preview}
-				alt="Notes"
-			/>
+			<div className="flex">
+				<img
+					className="flex w-1/2"
+					src={note.preview}
+					alt="Notes"
+				/>
+				<img
+					className="flex w-1/2"
+					src={note.preview}
+					alt="Notes"
+				/>
+			</div>
 		</Card>
 	);
 }

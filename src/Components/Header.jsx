@@ -24,7 +24,7 @@ const Header = () => {
 							SWAP
 						</span>
 					</NavLink>
-					<div className="flex items-center lg:order-2 gap-4">
+					<div className="flex  items-center lg:order-2 gap-4">
 						<NavLink to="offer">
 							<Button
 								variant="outlined"
@@ -51,7 +51,7 @@ const Header = () => {
 						</button>
 					</div>
 					<div
-						className={` ${dropdown ? "block" : "hidden"} transition-transform duration-500 ease-in-out justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
+						className={` ${dropdown ? "flex" : "hidden"} grow px-10 lg:justify-end transition-transform duration-500 ease-in-out w-full lg:flex lg:w-auto lg:order-1`}
 					>
 						<ul className="flex flex-col mt-4 font-medium pl-5 lg:pl-0 lg:flex-row lg:space-x-10 lg:mt-0 gap-4 lg:gap-0">
 							<NavLink
@@ -59,7 +59,7 @@ const Header = () => {
 								className={({ isActive }) =>
 									isActive ? "text-secondary" : ""
 								}
-								onClick={() => setDropdown(!dropdown)}
+								onClick={() => setDropdown(false)}
 							>
 								Home
 							</NavLink>
@@ -68,7 +68,7 @@ const Header = () => {
 								className={({ isActive }) =>
 									isActive ? "text-secondary" : ""
 								}
-								onClick={() => setDropdown(!dropdown)}
+								onClick={() => setDropdown(false)}
 							>
 								Notes
 							</NavLink>
@@ -77,20 +77,20 @@ const Header = () => {
 								className={({ isActive }) =>
 									isActive ? "text-secondary" : ""
 								}
-								onClick={() => setDropdown(!dropdown)}
+								onClick={() => setDropdown(false)}
 							>
 								Blogs
 							</NavLink>
 							<div className="flex gap-5 lg:gap-10">
-								<li className="active:scale-75 duration-100">
+								<NavLink to="profile" className="active:scale-75 duration-100">
 									<FaUserCircle
-										onClick={() => setDropdown(!dropdown)}
+										onClick={() => setDropdown(false)}
 										size={25}
 									/>
-								</li>
+								</NavLink>
 								<li className="active:scale-75 duration-100">
 									<FaSearch
-										onClick={() => setDropdown(!dropdown)}
+										onClick={() => setDropdown(false)}
 										size={25}
 									/>
 								</li>

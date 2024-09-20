@@ -25,7 +25,7 @@ function Select({
 					: "bg-transparent text-slate-700 dark:text-white"
 			} focus:border-primary `,
 			`text-slate-500 peer-focus:text-primary-dark dark:text-slate-200`,
-			"hover:bg-primary-light hover:text-white text-black dark:text-white dark:bg-slate-700",
+			"hover:bg-primary-light hover:text-white text-black",
 		],
 		secondary: [
 			`${
@@ -34,7 +34,7 @@ function Select({
 					: "bg-transparent text-slate-700 dark:text-white"
 			} focus:border-secondary`,
 			`text-slate-400 peer-focus:text-secondary-dark dark:text-slate-200`,
-			"hover:bg-secondary-light hover:text-white text-black dark:text-white dark:bg-slate-700",
+			"hover:bg-secondary-light hover:text-white text-black",
 		],
 		tertiary: [
 			`${
@@ -43,7 +43,7 @@ function Select({
 					: "bg-transparent text-slate-700 dark:text-white"
 			} focus:border-tertiary`,
 			`text-slate-400 peer-focus:text-tertiary-dark dark:text-slate-200`,
-			"hover:bg-tertiary-light hover:text-white text-black dark:text-white dark:bg-slate-700",
+			"hover:bg-tertiary-light hover:text-white text-black",
 		],
 
 		xs: "text-xs",

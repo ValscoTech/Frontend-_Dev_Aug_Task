@@ -9,37 +9,46 @@ function Blogs() {
 
 	const popularPosts = [
 		{
+			image: "./images/post.png",
 			title: "PRODUCT",
 			body: "Meed Jurident: The App that revolutionizes Legal Workflow.",
+			link: "https://www.jurident.com/",
 		},
 		{
+			image: "https://firebasestorage.googleapis.com/v0/b/newproj-c44e3.appspot.com/o/Imgs-zsYrjw6c5AN3jFs6U8pF47Bo9aN2%2FBlogImg.png?alt=media&token=b86dbdbe-1901-432c-8f28-46e618157612",
 			title: "BLOGS | NISHITA JAISWAL",
 			body: "AI in the Courtroom: A New Era of Litigation.",
+			link: "https://www.valscotech.com/BlogPage/kGdtskcO7XdIpW3D637h",
 		},
 		{
+			image: "https://firebasestorage.googleapis.com/v0/b/newproj-c44e3.appspot.com/o/Imgs-Ao1tD8drjVPsB5jOSebryJ6RGNj1%2FBlogImg.png?alt=media&token=2e4d3a6a-b8d8-4292-b315-acbb20c76af7",
 			title: "BLOGS | AKSHAT SINGH",
 			body: "The benefits of implementing a National Legal Case Database.",
+			link: "https://www.valscotech.com/BlogPage/BB3kYZMXjDw8Jr6I0fsQ",
 		},
 	];
 
 	const feeds = [
 		{
-			title: "Creating a National Legal Ca...",
+			title: "The role of Artificial Intelligence in Legal...",
 			author: "@Gautam Singh",
 			subtitle:
-				"Ion collection is now more important than ever in the current digital age. Lawyers can improve capacity to serve their clients by enhancing their ability to collect and analyze client information, streamline case management, and improve communication.",
+				"With the rise of artificial intelligence (AI) over the past decade, many doubts and concerns have risen over the potential replacement of people in the legal profession, whether th...",
+			link: "https://www.valscotech.com/BlogPage/GVuzR35NcTKA70pSjDKk",
 		},
 		{
 			title: "Enhancing Law Making Efficiency with...",
-			author: "@Nishita Jaiswal",
+			author: "@Priyanshu Agarwal",
 			subtitle:
-				"In an era marked by rapid technological advancements, it comes as no surprise that artificial intelligence (AI) is revolutionizing various industries. One sector that stands to benefit immensely from AI is governance and law making. With its ability",
+				"In an era marked by rapid technological advancements, it comes as no surprise that artificial intelligence (AI) is revolutionizing various industries. One sector that stands to ben...",
+			link: "https://www.valscotech.com/BlogPage/vTeusvly02vQ4PURe9jM"
 		},
 		{
 			title: "Implementing a National Legal Case...",
 			author: "@Preet Singh",
 			subtitle:
-				"In an era marked by rapid technological advancements, it comes as no surprise that artificial intelligence (AI) is revolutionizing various industries. One sector that stands to benefit immensely from AI is governance and law making. With its ability",
+				"A thorough and easily available legal information collection is now more important than ever for both attorneys and the general public in the current digital age. Lawyers can impr...",
+			link: "https://www.valscotech.com/BlogPage/BB3kYZMXjDw8Jr6I0fsQ"
 		},
 	];
 

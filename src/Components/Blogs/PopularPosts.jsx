@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 
@@ -12,17 +13,25 @@ function PopularPosts({ posts }) {
 							key={index}
 							className="flex justify-center items-center gap-2 p-4"
 						>
-							<div className="flex w-1/4">
-								<img
-									className="p-2 w-auto"
-									src="./images/post.png"
+							<NavLink
+								to={post.link}
+								target={"_blank"}
+								className="flex w-1/4"
+							>
+								{post.image && post.image !== "" && <img
+									className="p-2 w-auto cursor-pointer"
+									src={post.image}
 									alt="Post"
-								/>
-							</div>
+								/>}
+							</NavLink>
 							<div className="flex flex-col w-3/4">
-								<p className="text-md font-medium text-primary">
+								<NavLink
+									to={post.link}
+									target={"_blank"}
+									className="text-md font-medium text-primary cursor-pointer"
+								>
 									{post.title}
-								</p>
+								</NavLink>
 								<p className="text-sm">{post.body}</p>
 							</div>
 						</div>
@@ -37,7 +46,12 @@ function PopularPosts({ posts }) {
 						Energize Your Software Solutions with our comprehensive
 						range of services.
 					</p>
-					<Button theme="monochrome">Get Started</Button>
+					<NavLink
+						to="https://www.valscotech.com/Login"
+						target={"_blank"}
+					>
+						<Button theme="monochrome">Get Started</Button>
+					</NavLink>
 				</Card>
 			</div>
 		</div>

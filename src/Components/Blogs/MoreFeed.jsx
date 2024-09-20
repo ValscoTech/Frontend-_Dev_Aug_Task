@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 
@@ -23,7 +24,11 @@ function MoreFeed({ feeds }) {
 						</div>
 						<div className="flex flex-col gap-2">
 							<p className="text-sm">{feed.author}</p>
-							<Button className="!w-fit !mx-auto">Read More</Button>
+							<NavLink className="w-fit mx-auto" to={feed.link} target="_blank">
+								<Button className="!w-fit !mx-auto">
+									Read More
+								</Button>
+							</NavLink>
 						</div>
 					</Card>
 				))}

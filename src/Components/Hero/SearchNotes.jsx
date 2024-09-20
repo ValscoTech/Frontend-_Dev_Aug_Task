@@ -57,7 +57,7 @@ const SearchNotes = () => {
 						]}
 					/>
 
-					<NavLink to="/notes">
+					<NavLink to="/notes" className="w-fit">
 						<Button className="flex justify-center items-center gap-2 !w-auto">
 							<LuArrowDownRight />
 							Search Notes
