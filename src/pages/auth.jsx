@@ -4,7 +4,7 @@ import LoginForm from "../Components/Auth/LoginForm";
 import Alert from "../Components/UI/Alert";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const GOOGLE_CLIENT_ID ='664560198655-p9njutmmq5mkrena81k3ulnl6bm7tvgl.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 function Auth() {
 	useEffect(() => {
