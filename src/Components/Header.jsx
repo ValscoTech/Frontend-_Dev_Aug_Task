@@ -82,12 +82,14 @@ const Header = () => {
 								Blogs
 							</NavLink>
 							<div className="flex gap-5 lg:gap-10">
-								<NavLink to="profile" className="active:scale-75 duration-100">
-									<FaUserCircle
-										onClick={() => setDropdown(false)}
-										size={25}
-									/>
-								</NavLink>
+								<button className="active:scale-75 duration-100 w-fit rounded-full">
+									<NavLink to="profile">
+										<FaUserCircle
+											onClick={() => setDropdown(false)}
+											size={25}
+										/>
+									</NavLink>
+								</button>
 								<li className="active:scale-75 duration-100">
 									<FaSearch
 										onClick={() => setDropdown(false)}

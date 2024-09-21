@@ -78,7 +78,7 @@ function Input({
 			/>
 			{variant != "outlined" && (
 				<span
-					className={`absolute bottom-0 left-0 w-0 h-[3px] peer-focus:w-full transition-all duration-300 ease-in-out bg-${theme}`}
+					className={`absolute bottom-0 left-0 w-0 h-[3px] peer-focus:w-full transition-all duration-300 ease-in bg-${theme}`}
 				></span>
 			)}
 			<label

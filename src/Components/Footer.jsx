@@ -68,13 +68,13 @@ const Footer = ({ smoothScroll }) => {
 
 				<div className="flex flex-col py-10 gap-3">
 					<h3 className="text-3xl font-medium">Social Media</h3>
+					<div className="flex gap-4">
+						<FaTwitter size={22} />
+						<FaInstagram size={22} />
+						<FaFacebook size={22} />
+					</div>
 					<div className="flex flex-col sm:flex-row justify-between items-end">
-						<div className="flex flex-col gap-4 w-full sm:w-auto">
-							<div className="flex gap-4">
-								<FaTwitter size={22} />
-								<FaInstagram size={22} />
-								<FaFacebook size={22} />
-							</div>
+						<div className="flex flex-col gap-3 w-full sm:w-auto">
 							<h4 className="mt-6 text-2xl font-medium">Phone</h4>
 							<div className="flex flex-col font-normal gap-1 text-lg">
 								<p
@@ -105,7 +105,7 @@ const Footer = ({ smoothScroll }) => {
 								jurudentyi@gmail.com
 							</NavLink>
 							<br />
-							<h4 className="mmain sare khtm kr le rha tb to-lime-50">
+							<h4 className="text-2xl font-medium">
 								Support
 							</h4>
 							<NavLink

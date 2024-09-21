@@ -19,7 +19,7 @@ function PopularPosts({ posts }) {
 								className="flex w-1/4"
 							>
 								{post.image && post.image !== "" && <img
-									className="p-2 w-auto cursor-pointer"
+									className="p-2 aspect-square object-contain w-auto cursor-pointer"
 									src={post.image}
 									alt="Post"
 								/>}
