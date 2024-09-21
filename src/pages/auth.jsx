@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import RegisterForm from "../Components/Auth/RegisterForm";
 import LoginForm from "../Components/Auth/LoginForm";
 import Alert from "../Components/UI/Alert";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
 function Auth() {
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -44,13 +48,16 @@ function Auth() {
 		<div
 			className={`container transition-all duration-300 mx-auto flex flex-col lg:flex-row text-black dark:text-white py-20 px-5 gap-20 ${state === "login" ? "lg:flex-row-reverse" : ""}`}
 		>
+			<GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+
 			<div className="flex flex-col items-center justify-center w-full lg:w-1/2">
 				{state === "login" ? (
 					<LoginForm setState={setState} addAlert={addAlert} />
-				) : (
-					<RegisterForm setState={setState} addAlert={addAlert} />
-				)}
+					) : (
+						<RegisterForm setState={setState} addAlert={addAlert} />
+						)}
 			</div>
+			</GoogleOAuthProvider>
 			<div className="flex flex-col items-center justify-center w-full lg:w-1/2">
 				<p className="text-2xl font-medium">
 					RENT NOTES - OFFER NOTES - MAKE A PROFILE AND DO MORE WITH

@@ -3,6 +3,7 @@ import { LuMail, LuUser2, LuLock } from "react-icons/lu";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { useState } from "react";
+import { useGoogleLogin } from '@react-oauth/google';
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import Divider from "../UI/Divider";
@@ -11,6 +12,11 @@ const RegisterForm = ({ setState, addAlert }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [name, setName] = useState("");
+
+	const signinWithGoogle = useGoogleLogin({
+		onSuccess: tokenResponse => console.log(tokenResponse),
+		onError: () => console.log('Login Failed'),
+	  });
 
 	const handleSignUp = (e) => {
 		e.preventDefault();
@@ -35,6 +41,8 @@ const RegisterForm = ({ setState, addAlert }) => {
 						labelClassName="!text-slate-700 !bg-slate-100"
 						variant="outlined"
 						icon={<LuMail />}
+						value={email}
+                		onChange={(e) => setEmail(e.target.value)}
 					/>
 
 					<Input
@@ -46,6 +54,8 @@ const RegisterForm = ({ setState, addAlert }) => {
 						labelClassName="!text-slate-700 !bg-slate-100"
 						variant="outlined"
 						icon={<LuLock />}
+						value={password}
+                		onChange={(e) => setPassword(e.target.value)}
 					/>
 
 					<Input
@@ -56,6 +66,8 @@ const RegisterForm = ({ setState, addAlert }) => {
 						labelClassName="!text-slate-700 !bg-slate-100"
 						variant="outlined"
 						icon={<LuUser2 />}
+						value={name}
+                		onChange={(e) => setName(e.target.value)}
 					/>
 				</div>
 
@@ -87,6 +99,7 @@ const RegisterForm = ({ setState, addAlert }) => {
 						variant="filled"
 						theme="monochrome"
 						size="large"
+						onClick={signinWithGoogle}
 					>
 						<FcGoogle />
 						Continue with Google
