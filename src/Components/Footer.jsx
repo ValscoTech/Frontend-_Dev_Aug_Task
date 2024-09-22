@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaTwitter, FaInstagram, FaFacebook, FaArrowUp } from "react-icons/fa";
 import { LuMoveDownRight } from "react-icons/lu";
 import Button from "./UI/Button";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Alert from "./UI/Alert";
 
 const Footer = ({ smoothScroll }) => {
@@ -69,9 +69,18 @@ const Footer = ({ smoothScroll }) => {
 				<div className="flex flex-col py-10 gap-3">
 					<h3 className="text-3xl font-medium">Social Media</h3>
 					<div className="flex gap-4">
-						<FaTwitter size={22} />
-						<FaInstagram size={22} />
-						<FaFacebook size={22} />
+						<NavLink className="hover:text-zinc-200 active:scale-95">
+							<FaTwitter size={22} />
+						</NavLink>
+						<NavLink
+							to="https://www.instagram.com/vals.co_tech/" target={"_blank"}
+							className="hover:text-zinc-200 active:scale-95"
+						>
+							<FaInstagram size={22} />
+						</NavLink>
+						<NavLink className="hover:text-zinc-200 active:scale-95">
+							<FaFacebook size={22} />
+						</NavLink>
 					</div>
 					<div className="flex flex-col sm:flex-row justify-between items-end">
 						<div className="flex flex-col gap-3 w-full sm:w-auto">
@@ -105,9 +114,7 @@ const Footer = ({ smoothScroll }) => {
 								jurudentyi@gmail.com
 							</NavLink>
 							<br />
-							<h4 className="text-2xl font-medium">
-								Support
-							</h4>
+							<h4 className="text-2xl font-medium">Support</h4>
 							<NavLink
 								to="mailto:connect@valsco.com"
 								className="hover:text-secondary-dark dark:hover:text-secondary-light"

@@ -15,10 +15,14 @@ function DetailsSection({ setFormData }) {
 		{ key: 10, value: "Module 10" },
 	];
 	const schools = [
-		{ key: "scope", value: "SCOPE" },
-		{ key: "sense", value: "SENSE" },
-		{ key: "score", value: "SCORE" },
 		{ key: "sas", value: "SAS" },
+		{ key: "sense", value: "SENSE" },
+		{ key: "scope", value: "SCOPE" },
+		{ key: "site", value: "SITE" },
+		{ key: "ssl", value: "SSL" },
+		{ key: "vsign", value: "V-SIGN" },
+		{ key: "select", value: "SELECT" },
+		{ key: "scheme", value: "SCHEME" },
 	];
 
 	const handleChange = (e) => {

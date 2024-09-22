@@ -5,7 +5,7 @@ import Button from "../UI/Button";
 import DragDrop from "../UI/DragDrop";
 
 function UploadSection({ formData, setFormData, addAlert }) {
-	const [price, setPrice] = useState(formData.price || 20);
+	const [price, setPrice] = useState(formData.price || 70);
 
 	const handleSubmit = (e) => {
 		if (price <= 0) {
@@ -42,8 +42,11 @@ function UploadSection({ formData, setFormData, addAlert }) {
 						Upload your files
 					</h3>
 					<DragDrop
-						acceptedFileTypes={[".png", ".jpg", ".jpeg"]}
+						acceptedFileTypes={[".png", ".jpg", ".jpeg", ".webp"]}
 						addAlert={addAlert}
+						minFiles={2}
+						maxFiles={5}
+						setFormData={setFormData}
 					/>
 					<div className="relative sm:hidden flex w-full gap-2">
 						<Slider

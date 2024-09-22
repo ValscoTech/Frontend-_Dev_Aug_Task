@@ -2,7 +2,13 @@
 import { useRef, useState } from "react";
 import { LuTrash2 } from "react-icons/lu";
 
-export default function DragAndDrop({ acceptedFileTypes, addAlert }) {
+export default function DragAndDrop({
+	acceptedFileTypes,
+	addAlert,
+	minFiles,
+	maxFiles,
+	setFormData,
+}) {
 	const [dragActive, setDragActive] = useState(false);
 	const inputRef = useRef(null);
 	const [files, setFiles] = useState([]);
@@ -16,6 +22,10 @@ export default function DragAndDrop({ acceptedFileTypes, addAlert }) {
 	function handleChange(e) {
 		e.preventDefault();
 		if (e.target.files && e.target.files[0]) {
+			if (files.length + e.target.files["length"] > maxFiles) {
+				addAlert(`Maximum ${maxFiles} files are allowed.`, "error");
+				return;
+			}
 			for (let i = 0; i < e.target.files["length"]; i++) {
 				if (files.some((f) => f.name === e.target.files[i].name)) {
 					addAlert("No duplicate files are allowed.", "error");
@@ -23,15 +33,11 @@ export default function DragAndDrop({ acceptedFileTypes, addAlert }) {
 				}
 				setFiles((prevState) => [...prevState, e.target.files[i]]);
 				addAlert("File uploaded successfully.", "success");
+				setFormData((prevState) => ({
+					...prevState,
+					previews: [...prevState.previews, e.target.files[i]],
+				}));
 			}
-		}
-	}
-
-	function handleSubmitFile(e) {
-		if (files.length === 0) {
-			// no file has been submitted
-		} else {
-			// write submit logic here
 		}
 	}
 
@@ -56,14 +62,22 @@ export default function DragAndDrop({ acceptedFileTypes, addAlert }) {
 			);
 		}
 
-		for (let file of e.dataTransfer.files) {
-			if (newFiles.some((f) => f.name === file.name)) {
+		for (const file of e.dataTransfer.files) {
+			if (files.some((f) => f.name === file.name)) {
 				addAlert("No duplicate files are allowed.", "error");
 				return;
 			}
 		}
 
 		setFiles((prevState) => [...prevState, ...newFiles]);
+		addAlert("File uploaded successfully.", "success");
+
+		for (let i = 0; i < files["length"]; i++) {
+			setFormData((prevState) => ({
+				...prevState,
+				previews: [...prevState.previews, files[i]],
+			}));
+		}
 	}
 
 	function handleDragLeave(e) {
@@ -101,8 +115,8 @@ export default function DragAndDrop({ acceptedFileTypes, addAlert }) {
 			<div
 				className={`text-slate-700 ${
 					dragActive
-						? "bg-transparent border-slate-300 opacity-80 border-dashed border-4 border-spacing-1"
-						: "bg-zinc-100"
+						? "bg-transparent border-zinc-300 opacity-80 border-dashed border-4 border-spacing-1"
+						: "bg-zinc-200"
 				} 
 				rounded-lg text-xs min-h-40 text-center flex flex-col items-center justify-center`}
 				onDragEnter={handleDragEnter}

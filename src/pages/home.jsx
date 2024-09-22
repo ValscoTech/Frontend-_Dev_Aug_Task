@@ -2,42 +2,29 @@ import Hero from "../Components/Hero/Hero";
 import AppPromotion from "../Components/Hero/AppPromotion";
 import DisplaySection from "../Components/OfferNotes/DisplaySection";
 import SearchNotes from "../Components/Hero/SearchNotes";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNotes } from "../contexts/Notes";
+import { useUser } from "../contexts/User";
 
 const Home = () => {
+	const [notes, setNotes] = useState([]);
+	const { user } = useUser();
+	const { getNotesByUserId } = useNotes();
+	
 	useEffect(() => {
+		const fetchNotes = async () => {
+			if (user && user.id) {
+				try {
+					const fetchedNotes = await getNotesByUserId(user.id);
+					setNotes(fetchedNotes);
+				} catch (error) {
+					console.error("Error fetching notes:", error);
+				}
+			}
+		};
+		fetchNotes();
 		window.scrollTo(0, 0);
-	}, []);
-
-	const notes = [
-		{
-			title: "Computation of Mathematics",
-			coursename: "Mathematics",
-			code: "CSE 2005",
-			module: 8,
-			school: "SCOPE",
-			price: 100,
-			preview: "./images/notes.jpg",
-		},
-		{
-			title: "Computation of Mathematics",
-			coursename: "Mathematics",
-			code: "CSE 2005",
-			module: 8,
-			school: "SCOPE",
-			price: 120,
-			preview: "./images/notes.jpg",
-		},
-		{
-			title: "Computation of Mathematics",
-			coursename: "Mathematics",
-			code: "CSE 2005",
-			module: 8,
-			school: "SCOPE",
-			price: 50,
-			preview: "./images/notes.jpg",
-		},
-	];
+	}, [user, getNotesByUserId]);
 
 	return (
 		<div className="container mx-auto p-5">

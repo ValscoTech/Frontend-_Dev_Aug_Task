@@ -3,9 +3,11 @@ import { FaUserCircle, FaSearch } from "react-icons/fa";
 import { LuMenu } from "react-icons/lu";
 import Button from "./UI/Button";
 import { NavLink } from "react-router-dom";
+import { useUser } from "../contexts/User";
 
 const Header = () => {
 	const [dropdown, setDropdown] = useState(false);
+	const { user } = useUser();
 
 	return (
 		<header id="header">
@@ -53,7 +55,7 @@ const Header = () => {
 					<div
 						className={` ${dropdown ? "flex" : "hidden"} grow px-10 lg:justify-end transition-transform duration-500 ease-in-out w-full lg:flex lg:w-auto lg:order-1`}
 					>
-						<ul className="flex flex-col mt-4 font-medium pl-5 lg:pl-0 lg:flex-row lg:space-x-10 lg:mt-0 gap-4 lg:gap-0">
+						<ul className="flex flex-col justify-center items-center mt-4 font-medium pl-5 lg:pl-0 lg:flex-row lg:space-x-10 lg:mt-0 gap-4 lg:gap-0">
 							<NavLink
 								to=""
 								className={({ isActive }) =>
@@ -83,19 +85,31 @@ const Header = () => {
 							</NavLink>
 							<div className="flex gap-5 lg:gap-10">
 								<button className="active:scale-75 duration-100 w-fit rounded-full">
-									<NavLink to="profile">
-										<FaUserCircle
+									<NavLink
+										to="profile"
+										onClick={() => setDropdown(false)}
+									>
+										<div className="rounded-full w-10 h-10 bg-slate-300 p-[2px]">
+											{user && user.profile !== "" ? (
+												<img
+													src={user.profile}
+													alt="Profile"
+													className="rounded-full"
+												/>
+											) : (
+												<FaUserCircle className="w-full h-full text-slate-800" />
+											)}
+										</div>
+									</NavLink>
+								</button>
+								<button className="active:scale-75 duration-100 w-fit rounded-full">
+									<li className="active:scale-75 duration-100">
+										<FaSearch
 											onClick={() => setDropdown(false)}
 											size={25}
 										/>
-									</NavLink>
+									</li>
 								</button>
-								<li className="active:scale-75 duration-100">
-									<FaSearch
-										onClick={() => setDropdown(false)}
-										size={25}
-									/>
-								</li>
 							</div>
 						</ul>
 					</div>

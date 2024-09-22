@@ -9,8 +9,12 @@ function NotesCard({ note, theme = "default" }) {
 		tertiary: "bg-tertiary-light",
 	};
 	return (
-		<Card className="duration-300 flex flex-col gap-3" size="sm" theme={theme}>
-			<div className="flex flex-col gap-2 justify-end">
+		<Card
+			className="duration-300 flex flex-col justify-between gap-3"
+			size="sm"
+			theme={theme}
+		>
+			<div className="flex flex-col gap-2 justify-end ">
 				<div className="flex items-center gap-5">
 					<h4 className="text-xl font-light">
 						{note.code.toUpperCase()}
@@ -45,16 +49,9 @@ function NotesCard({ note, theme = "default" }) {
 				</div>
 			</div>
 			<div className="flex">
-				<img
-					className="flex w-1/2"
-					src={note.preview}
-					alt="Notes"
-				/>
-				<img
-					className="flex w-1/2"
-					src={note.preview}
-					alt="Notes"
-				/>
+				{note.previews.slice(0, 2).map((preview, idx) => (
+					<img key={idx} className="flex w-1/2" src={preview} alt="Notes" />
+				))}
 			</div>
 		</Card>
 	);

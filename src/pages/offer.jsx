@@ -3,72 +3,74 @@ import DetailsSection from "../Components/OfferNotes/DetailsSection";
 import UploadSection from "../Components/OfferNotes/UploadSection";
 import DisplaySection from "../Components/OfferNotes/DisplaySection";
 import Alert from "../Components/UI/Alert";
+import { useNotes } from "../contexts/Notes";
+import { useUser } from "../contexts/User";
 
 function Offer() {
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+	const [alerts, setAlerts] = useState([]);
+	const [offers, setOffers] = useState([]);
+	const { getNotesByUserId } = useNotes();
+	const { user } = useUser();
 
-	const [offers, setOffers] = useState([
-		{
-			code: "CSE2005",
-			title: "Computation Of Maths",
-			coursename: "Computer Science: Python",
-			module: 12,
-			school: "SCOPE",
-			price: "100",
-			preview: "./images/notes.jpg",
-		},
-		{
-			code: "CSE2002",
-			title: "Computation Of Maths",
-			coursename: "Computer Science: Python",
-			module: 7,
-			school: "SENSE",
-			price: "100",
-			preview: "./images/notes.jpg",
-		},
-		{
-			code: "CSE2009",
-			title: "Qualitative Analysis",
-			coursename: "Computer Science: Python",
-			module: 6,
-			school: "SCORE",
-			price: "100",
-			preview: "./images/notes.jpg",
-		},
-	]);
+	useEffect(() => {
+		const fetchNotes = async () => {
+			const fetchedNotes = await getNotesByUserId(user.id);
+			setOffers(fetchedNotes);
+		};
+
+		fetchNotes();
+		window.scrollTo(0, 0);
+	}, [user, getNotesByUserId]);
+
 	const [formData, setFormData] = useState({
-		code: "",
 		title: "",
 		coursename: "",
+		code: "",
 		module: "",
 		school: "",
 		price: "",
-		preview: "./images/notes.jpg",
+		previews: [],
 	});
-
-	const [alerts, setAlerts] = useState([]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		console.log(formData);
 		// check if offer already exists
 		if (
 			offers.some(
 				(offer) =>
-					offer.title.toLowerCase() === formData.title.toLowerCase(),
+					offer.title.toLowerCase() === formData.title.toLowerCase().trim(),
 			)
 		) {
 			addAlert("Offer already exists", "warning");
 			return;
 		}
-		if (Object.values(formData).some((value) => value === "")) {
+		if (Object.values(formData).some((value) => value.trim() === "")) {
 			//check if all fields are filled
 			addAlert("Please fill all fields", "warning");
 			return;
 		}
+		if (formData.previews.length < 2) {
+			addAlert("Please upload at least 2 files", "warning");
+			return;
+		}
+
+		setFormData({
+			...formData,
+			id: toString(offers.length + 1),
+			ownerId: user.id,
+			title: formData.title.trim(),
+			coursename: formData.coursename.trim(),
+			code: formData.code.trim(),
+			module: formData.module.trim(),
+			school: formData.school.trim(),
+			price: formData.price.trim(),
+			consumersId: [],
+			createdAt: new Date().toISOString(),
+		});
 
 		setOffers([formData, ...offers]);
+		addAlert("Offer submitted successfully", "success");
 	};
 
 	const addAlert = (message, variant) => {

@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 
 import App from "./App.jsx";
 import Home from "./pages/home.jsx";
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "profile",
-				element: <Profile />,
+				element: (
+					<ProtectedRoute>
+						<Profile />
+					</ProtectedRoute>
+				),
 			},
 			{
 				path: "blogs",
@@ -36,15 +41,27 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "notes",
-				element: <Notes />,
+				element: (
+					<ProtectedRoute>
+						<Notes />
+					</ProtectedRoute>
+				),
 			},
 			{
 				path: "offer",
-				element: <Offer />,
+				element: (
+					<ProtectedRoute>
+						<Offer />
+					</ProtectedRoute>
+				),
 			},
 			{
 				path: "rent",
-				element: <Rent />,
+				element: (
+					<ProtectedRoute>
+						<Rent />
+					</ProtectedRoute>
+				),
 			},
 		],
 	},

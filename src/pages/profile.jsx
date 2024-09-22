@@ -1,54 +1,35 @@
 import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { useUser } from "../contexts/User";
+import { useNotes } from "../contexts/Notes";
 import Alert from "../Components/UI/Alert";
 import EditProfile from "../Components/Profile/EditProfile";
 import DisplayProfile from "../Components/Profile/DisplayProfile";
 import DisplaySection from "../Components/OfferNotes/DisplaySection";
 
 function Profile() {
-	const notes = [
-		{
-			title: "Computation of Mathematics",
-			coursename: "Mathematics",
-			code: "CSE 2005",
-			module: 8,
-			school: "SCOPE",
-			price: 100,
-			preview: "./images/notes.jpg",
-		},
-		{
-			title: "Computation of Mathematics",
-			coursename: "Mathematics",
-			code: "CSE 2005",
-			module: 8,
-			school: "SCOPE",
-			price: 120,
-			preview: "./images/notes.jpg",
-		},
-		{
-			title: "Computation of Mathematics",
-			coursename: "Mathematics",
-			code: "CSE 2005",
-			module: 8,
-			school: "SCOPE",
-			price: 50,
-			preview: "./images/notes.jpg",
-		},
-	];
-
+	const [offersMade, setOffersMade] = useState([]);
+	const [rentedNotes, setRentedNotes] = useState([]);
 	const [isEdit, setIsEdit] = useState(false);
 	const [alerts, setAlerts] = useState([]);
-
-	const [userInfo, setUserInfo] = useState({
-		name: "Adam Doe",
-		avatar: "",
-		roonno: "123",
-		department: "IT",
-		specialization: "",
-	});
+	const { user, loading, updateUser, logout } = useUser();
+	const { getNotesByUserId, getRentNotesByUserId } = useNotes();
 
 	useEffect(() => {
+		const fetchOffersMade = async () => {
+			const offers = await getNotesByUserId(user.id);
+			setOffersMade(offers);
+		};
+
+		const fetchRentedNotes = async () => {
+			const notes = await getRentNotesByUserId(user.id);
+			setRentedNotes(notes);
+		};
+
+		fetchOffersMade();
+		fetchRentedNotes();
 		window.scrollTo(0, 0);
-	}, []);
+	}, [user, getNotesByUserId, getRentNotesByUserId]);
 
 	const addAlert = (message, variant) => {
 		const id = new Date().getTime();
@@ -79,31 +60,34 @@ function Profile() {
 			),
 		);
 	};
+	if (loading) return <div>Loading</div>;
+	if (!user) return <Navigate to="/auth" replace />;
 
 	return (
 		<div className="container mx-auto p-5 text-black dark:text-white">
 			{isEdit ? (
 				<EditProfile
-					userInfo={userInfo}
+					userInfo={user}
 					setIsEdit={setIsEdit}
-					setUserInfo={setUserInfo}
 					addAlert={addAlert}
+					updateUser={updateUser}
+					handleLogout={logout}
 				/>
 			) : (
 				<>
-					<DisplayProfile userInfo={userInfo} setIsEdit={setIsEdit} />
+					<DisplayProfile userInfo={user} setIsEdit={setIsEdit} />
 					<div className="flex flex-col gap-y-10 mt-16">
 						<div className="flex flex-col gap-y-3">
 							<h3 className="text-2xl font-medium">
 								Offers Made:
 							</h3>
-							<DisplaySection data={notes} />
+							<DisplaySection data={offersMade} />
 						</div>
 						<div className="flex flex-col gap-y-3">
 							<h3 className="text-2xl font-medium">
 								Notes Rented:
 							</h3>
-							<DisplaySection data={notes} />
+							<DisplaySection data={rentedNotes} />
 						</div>
 					</div>
 				</>

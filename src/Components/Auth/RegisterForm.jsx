@@ -25,6 +25,13 @@ const RegisterForm = ({ setState, addAlert }) => {
 			addAlert("Please fill all fields", "warning");
 			return;
 		}
+
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+			addAlert("Please enter a valid email.", "warning");
+			return;
+		}
+		
 		addAlert("Form Submitted", "success");
 	};
 

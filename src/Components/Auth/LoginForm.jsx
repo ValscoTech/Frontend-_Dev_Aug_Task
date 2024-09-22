@@ -27,6 +27,13 @@ const LoginForm = ({ setState, addAlert }) => {
 			return;
 		}
 
+
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+			addAlert("Please enter a valid email.", "warning");
+			return;
+		}
+
 		addAlert("Form Submitted", "success");
 	};
 
