@@ -12,6 +12,7 @@ const Home = () => {
 	const { getNotesByUserId } = useNotes();
 	
 	useEffect(() => {
+		document.title = "Noteswap";
 		const fetchNotes = async () => {
 			if (user && user.id) {
 				try {

@@ -16,6 +16,8 @@ function Profile() {
 	const { getNotesByUserId, getRentNotesByUserId } = useNotes();
 
 	useEffect(() => {
+		document.title = "Noteswap - Profile";
+		
 		const fetchOffersMade = async () => {
 			const offers = await getNotesByUserId(user.id);
 			setOffersMade(offers);

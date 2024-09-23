@@ -7,12 +7,14 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 function Auth() {
+	const [alerts, setAlerts] = useState([]);
+	const [state, setState] = useState("login");
+	document.title = "Noteswap - Auth"
+	
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	const [alerts, setAlerts] = useState([]);
-	const [state, setState] = useState("login");
 
 	const addAlert = (message, variant) => {
 		const id = new Date().getTime();

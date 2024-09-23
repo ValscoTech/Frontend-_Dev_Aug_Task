@@ -18,6 +18,8 @@ function Rent({
 	const [zoomedImage, setZoomedImage] = useState(null);
 
 	useEffect(() => {
+		document.title = "Noteswap - Rent";
+		
 		const fetchNotes = async () => {
 			const fetchedNotes = await getRentNotesByUserId(user.id);
 			setNotes(fetchedNotes);

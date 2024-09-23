@@ -4,6 +4,7 @@ import MoreFeed from "../Components/Blogs/MoreFeed";
 
 function Blogs() {
 	useEffect(() => {
+		document.title = "Noteswap - Blogs";
 		window.scrollTo(0, 0);
 	}, []);
 

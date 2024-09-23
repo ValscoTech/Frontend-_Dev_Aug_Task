@@ -9,6 +9,8 @@ function Notes() {
 	const { getAllNotesExceptOwner } = useNotes();
 	const { user } = useUser();
 	useEffect(() => {
+		document.title = "Noteswap - Search";
+
 		const fetchNotes = async () => {
 			const fetchedNotes = await getAllNotesExceptOwner(user.id);
 			setNotes(fetchedNotes);

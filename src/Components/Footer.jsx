@@ -69,12 +69,12 @@ const Footer = ({ smoothScroll }) => {
 				<div className="flex flex-col py-10 gap-3">
 					<h3 className="text-3xl font-medium">Social Media</h3>
 					<div className="flex gap-4">
-						<NavLink className="hover:text-zinc-200 active:scale-95">
+						<NavLink className="hover:text-slate-700 dark:hover:text-zinc-200 active:scale-95">
 							<FaTwitter size={22} />
 						</NavLink>
 						<NavLink
 							to="https://www.instagram.com/vals.co_tech/" target={"_blank"}
-							className="hover:text-zinc-200 active:scale-95"
+							className="hover:text-slate-700 dark:hover:text-zinc-200 active:scale-95"
 						>
 							<FaInstagram size={22} />
 						</NavLink>

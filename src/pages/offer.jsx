@@ -13,6 +13,7 @@ function Offer() {
 	const { user } = useUser();
 
 	useEffect(() => {
+		document.title = "Noteswap - Offer";
 		const fetchNotes = async () => {
 			const fetchedNotes = await getNotesByUserId(user.id);
 			setOffers(fetchedNotes);
