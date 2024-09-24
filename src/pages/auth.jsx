@@ -3,18 +3,19 @@ import RegisterForm from "../Components/Auth/RegisterForm";
 import LoginForm from "../Components/Auth/LoginForm";
 import Alert from "../Components/UI/Alert";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import useFacebook from "../contexts/Facebook";
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 function Auth() {
+	document.title = "Noteswap - Auth";
 	const [alerts, setAlerts] = useState([]);
 	const [state, setState] = useState("login");
-	document.title = "Noteswap - Auth"
-	
+	const [facebook, isFacebookReady] = useFacebook();
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
-
 
 	const addAlert = (message, variant) => {
 		const id = new Date().getTime();
@@ -46,6 +47,19 @@ function Auth() {
 		);
 	};
 
+	const handleFBAuth = async () => {
+		const response = await facebook.login();
+		if (response.status === "unknown") {
+			addAlert("Failed to autorize user", "error");
+		} else {
+			addAlert(
+				"Authorization through facebook was successful",
+				"success",
+			);
+		}
+		console.log(response);
+	};
+
 	return (
 		<div
 			className={`container transition-all duration-300 mx-auto flex flex-col lg:flex-row text-black dark:text-white py-20 px-5 gap-20 ${state === "login" ? "lg:flex-row-reverse" : ""}`}
@@ -53,9 +67,19 @@ function Auth() {
 			<GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
 				<div className="flex flex-col items-center justify-center w-full lg:w-1/2">
 					{state === "login" ? (
-						<LoginForm setState={setState} addAlert={addAlert} />
+						<LoginForm
+							setState={setState}
+							addAlert={addAlert}
+							isFacebookReady={isFacebookReady}
+							handleFBAuth={handleFBAuth}
+						/>
 					) : (
-						<RegisterForm setState={setState} addAlert={addAlert} />
+						<RegisterForm
+							setState={setState}
+							addAlert={addAlert}
+							isFacebookReady={isFacebookReady}
+							handleFBAuth={handleFBAuth}
+						/>
 					)}
 				</div>
 			</GoogleOAuthProvider>

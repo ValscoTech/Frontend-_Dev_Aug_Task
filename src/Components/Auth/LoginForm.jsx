@@ -10,15 +10,10 @@ import Input from "../UI/Input";
 import Divider from "../UI/Divider";
 import Checkbox from "../UI/Checkbox";
 
-const LoginForm = ({ setState, addAlert }) => {
+const LoginForm = ({ setState, addAlert, isFacebookReady, handleFBAuth }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [rememberMe, setRememberMe] = useState(false);
-
-	const loginWithGoogle = useGoogleLogin({
-		onSuccess: (tokenResponse) => console.log(tokenResponse),
-		onError: () => console.log("Login Failed"),
-	});
 
 	const handleLogin = (e) => {
 		e.preventDefault();
@@ -35,6 +30,17 @@ const LoginForm = ({ setState, addAlert }) => {
 
 		addAlert("Form Submitted", "success");
 	};
+
+	const handleGoogleAuth = useGoogleLogin({
+		onSuccess: (tokenResponse) => {
+			addAlert("Auth through google was successful!", "success");
+			console.log(tokenResponse);
+		},
+		onError: () => {
+			addAlert("Failed to authorize user", "error");
+			console.log("Login Failed");
+		},
+	});
 
 	return (
 		<form className="flex flex-col w-full px-5 py-10 gap-10 min-w-fit items-center font-sans rounded-lg bg-slate-100 border border-slate-300 shadow text-black">
@@ -114,7 +120,7 @@ const LoginForm = ({ setState, addAlert }) => {
 						variant="filled"
 						theme="monochrome"
 						size="large"
-						onClick={() => loginWithGoogle()}
+						onClick={handleGoogleAuth}
 					>
 						<FcGoogle />
 						Continue with Google
@@ -125,6 +131,8 @@ const LoginForm = ({ setState, addAlert }) => {
 						variant="filled"
 						theme="secondary"
 						size="large"
+						onClick={handleFBAuth}
+						disabled={!isFacebookReady}
 					>
 						<FaFacebookF />
 						Continue with Facebook

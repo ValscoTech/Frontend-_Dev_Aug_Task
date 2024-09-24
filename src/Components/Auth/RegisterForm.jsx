@@ -1,22 +1,22 @@
 import { NavLink } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
 import { LuMail, LuUser2, LuLock } from "react-icons/lu";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { useState } from "react";
-import { useGoogleLogin } from "@react-oauth/google";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import Divider from "../UI/Divider";
 
-const RegisterForm = ({ setState, addAlert }) => {
+const RegisterForm = ({
+	setState,
+	addAlert,
+	isFacebookReady,
+	handleFBAuth,
+}) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [name, setName] = useState("");
-
-	const signinWithGoogle = useGoogleLogin({
-		onSuccess: (tokenResponse) => console.log(tokenResponse),
-		onError: () => console.log("Login Failed"),
-	});
 
 	const handleSignUp = (e) => {
 		e.preventDefault();
@@ -34,6 +34,17 @@ const RegisterForm = ({ setState, addAlert }) => {
 
 		addAlert("Form Submitted", "success");
 	};
+
+	const handleGoogleAuth = useGoogleLogin({
+		onSuccess: (tokenResponse) => {
+			addAlert("Auth through google was successful!", "success");
+			console.log(tokenResponse);
+		},
+		onError: () => {
+			addAlert("Failed to authorize user", "error");
+			console.log("Login Failed");
+		},
+	});
 
 	return (
 		<form className="flex flex-col w-full px-5 py-10 gap-10 min-w-fit items-center font-sans rounded-lg bg-slate-100 border border-slate-300 shadow text-black">
@@ -106,7 +117,7 @@ const RegisterForm = ({ setState, addAlert }) => {
 						variant="filled"
 						theme="monochrome"
 						size="large"
-						onClick={signinWithGoogle}
+						onClick={handleGoogleAuth}
 					>
 						<FcGoogle />
 						Continue with Google
@@ -117,6 +128,8 @@ const RegisterForm = ({ setState, addAlert }) => {
 						variant="filled"
 						theme="secondary"
 						size="large"
+						onClick={handleFBAuth}
+						disabled={!isFacebookReady}
 					>
 						<FaFacebookF />
 						Continue with Facebook

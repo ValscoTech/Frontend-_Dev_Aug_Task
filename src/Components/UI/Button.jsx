@@ -8,6 +8,7 @@ function Button({
 	text,
 	size = "md",
 	children,
+	disabled = false,
 	onClick = () => {},
 }) {
 	const btnStyles = {
@@ -46,6 +47,7 @@ function Button({
 			type={type}
 			className={`w-full active:scale-95 origin-bottom font-medium hover:shadow-lg duration-300 outline-none ring-0 active:ring-0 active:outline-none px-5 py-2.5 text-center ${btnStyles[variant]} ${btnStyles[theme]} ${btnStyles[size]} ${className}`}
 			onClick={onClick}
+			disabled={disabled}
 		>
 			{children}
 			{text}

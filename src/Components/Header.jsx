@@ -17,6 +17,7 @@ const Header = () => {
 			setSearchActive(true);
 		} else if (searchActive && searchQuery.trim() !== "") {
 			navigate(`/notes?query=${searchQuery}`);
+			setSearchQuery("")
 			setSearchActive(false);
 		} else {
 			setSearchActive(false);
@@ -117,14 +118,14 @@ const Header = () => {
 								</button>
 								<div className="relative flex items-center">
 									<button
-										className={`active:scale-75 duration-100 w-fit rounded absolute right-3 ${searchActive ? "text-slate-900" : "dark:text-slate-300"}`}
+										className={`active:scale-75 duration-100 w-fit absolute right-3 ${searchActive ? "text-slate-900" : "dark:text-slate-300"}`}
 										onClick={handleSearchSubmit}
 									>
 										<FaSearch size={25} />
 									</button>
 									<input
 										type="text"
-										className={`border-gray-500 rounded-full text-black px-3 py-2 duration-300 transition-all focus:outline-none ${searchActive ? "w-60 sm:w-72 lg:w-40 xl:w-72 visible bg-white border" : "w-0 bg-transparent invisible border-none"}`}
+										className={`border-gray-500 rounded-full text-black px-3 py-2 duration-300 transition-all focus:outline-none ${searchActive ? "w-60 sm:w-96 lg:w-40 xl:w-72 visible bg-white border" : "w-0 bg-transparent invisible border-none"}`}
 										value={searchQuery}
 										onChange={(e) =>
 											setSearchQuery(e.target.value)
