@@ -42,14 +42,14 @@ function Blogs() {
 			author: "@Priyanshu Agarwal",
 			subtitle:
 				"In an era marked by rapid technological advancements, it comes as no surprise that artificial intelligence (AI) is revolutionizing various industries. One sector that stands to ben...",
-			link: "https://www.valscotech.com/BlogPage/vTeusvly02vQ4PURe9jM"
+			link: "https://www.valscotech.com/BlogPage/vTeusvly02vQ4PURe9jM",
 		},
 		{
 			title: "Implementing a National Legal Case...",
 			author: "@Preet Singh",
 			subtitle:
 				"A thorough and easily available legal information collection is now more important than ever for both attorneys and the general public in the current digital age. Lawyers can impr...",
-			link: "https://www.valscotech.com/BlogPage/BB3kYZMXjDw8Jr6I0fsQ"
+			link: "https://www.valscotech.com/BlogPage/BB3kYZMXjDw8Jr6I0fsQ",
 		},
 	];
 

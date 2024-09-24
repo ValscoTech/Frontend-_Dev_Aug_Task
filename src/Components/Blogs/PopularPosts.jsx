@@ -18,11 +18,13 @@ function PopularPosts({ posts }) {
 								target={"_blank"}
 								className="flex w-1/4"
 							>
-								{post.image && post.image !== "" && <img
-									className="p-2 aspect-square object-contain w-auto cursor-pointer"
-									src={post.image}
-									alt="Post"
-								/>}
+								{post.image && post.image !== "" && (
+									<img
+										className="p-2 aspect-square object-contain w-auto cursor-pointer"
+										src={post.image}
+										alt="Post"
+									/>
+								)}
 							</NavLink>
 							<div className="flex flex-col w-3/4">
 								<NavLink

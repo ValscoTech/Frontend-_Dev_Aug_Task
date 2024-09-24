@@ -50,7 +50,12 @@ function NotesCard({ note, theme = "default" }) {
 			</div>
 			<div className="flex">
 				{note.previews.slice(0, 2).map((preview, idx) => (
-					<img key={idx} className="flex w-1/2" src={preview} alt="Notes" />
+					<img
+						key={idx}
+						className="flex w-1/2"
+						src={preview}
+						alt="Notes"
+					/>
 				))}
 			</div>
 		</Card>

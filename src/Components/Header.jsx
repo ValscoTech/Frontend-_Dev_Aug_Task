@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaUserCircle, FaSearch } from "react-icons/fa";
 import { LuMenu } from "react-icons/lu";
 import Button from "./UI/Button";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/User";
 
 const Header = () => {
 	const [dropdown, setDropdown] = useState(false);
+	const [searchActive, setSearchActive] = useState(false);
+	const [searchQuery, setSearchQuery] = useState("");
 	const { user } = useUser();
+
+	const navigate = useNavigate();
+	const handleSearchSubmit = () => {
+		if (searchQuery.trim() !== "") {
+			navigate(`/notes?query=${searchQuery}`);
+			setSearchActive(false);
+		}
+	};
 
 	return (
 		<header id="header">
@@ -15,18 +25,17 @@ const Header = () => {
 				<div className="container flex flex-wrap justify-between items-center w-full mx-auto">
 					<NavLink to="" className="flex items-center">
 						<img
-							src="/favicon.svg" // Replace with your logo image path
+							src="/favicon.svg"
 							alt="NoteSwap"
 							className="h-16 sm:h-20"
 						/>
-
 						<span className="hidden sm:block self-center text-2xl font-semibold whitespace-nowrap">
 							NOTE
 							<br />
 							SWAP
 						</span>
 					</NavLink>
-					<div className="flex  items-center lg:order-2 gap-4">
+					<div className="flex items-center lg:order-2 gap-4">
 						<NavLink to="offer">
 							<Button
 								variant="outlined"
@@ -83,7 +92,7 @@ const Header = () => {
 							>
 								Blogs
 							</NavLink>
-							<div className="flex gap-5 lg:gap-10">
+							<div className="flex gap-5 lg:gap-10 items-center">
 								<button className="active:scale-75 duration-100 w-fit rounded-full">
 									<NavLink
 										to="profile"
@@ -102,14 +111,31 @@ const Header = () => {
 										</div>
 									</NavLink>
 								</button>
-								<button className="active:scale-75 duration-100 w-fit rounded-full">
-									<li className="active:scale-75 duration-100">
-										<FaSearch
-											onClick={() => setDropdown(false)}
-											size={25}
+								<div className="relative flex items-center">
+									<button
+										className="active:scale-75 duration-100 w-fit rounded-full"
+										onClick={() =>
+											setSearchActive(!searchActive)
+										}
+									>
+										<FaSearch size={25} />
+									</button>
+									{searchActive && (
+										<input
+											type="text"
+											value={searchQuery}
+											onChange={(e) =>
+												setSearchQuery(e.target.value)
+											}
+											placeholder="Search..."
+											className="ml-2 px-3 py-1 border border-gray-300 rounded-full text-black focus:outline-none"
+											onKeyPress={(e) =>
+												e.key === "Enter" &&
+												handleSearchSubmit()
+											}
 										/>
-									</li>
-								</button>
+									)}
+								</div>
 							</div>
 						</ul>
 					</div>

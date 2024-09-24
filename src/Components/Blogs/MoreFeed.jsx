@@ -24,7 +24,11 @@ function MoreFeed({ feeds }) {
 						</div>
 						<div className="flex flex-col gap-2">
 							<p className="text-sm">{feed.author}</p>
-							<NavLink className="w-fit mx-auto" to={feed.link} target="_blank">
+							<NavLink
+								className="w-fit mx-auto"
+								to={feed.link}
+								target="_blank"
+							>
 								<Button className="!w-fit !mx-auto">
 									Read More
 								</Button>

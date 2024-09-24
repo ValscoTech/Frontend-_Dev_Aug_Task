@@ -7,8 +7,7 @@ function Card({ className, theme = "default", children, size = "md" }) {
 			"bg-secondary-light dark:bg-secondary-dark border-secondary-light",
 		tertiary:
 			"bg-tertiary-light dark:bg-tertiary-dark border-tertiary-light",
-		default:
-			"bg-white text-black",
+		default: "bg-white text-black",
 		xs: "max-w-sm",
 		sm: "max-w-md",
 		md: "max-w-lg",

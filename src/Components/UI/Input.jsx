@@ -12,7 +12,7 @@ function Input({
 	name,
 	id,
 	placeholder = "Enter a value",
-	icon="",
+	icon = "",
 	value,
 	size = "md",
 	onChange,

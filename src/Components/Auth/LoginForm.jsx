@@ -3,7 +3,7 @@ import { LuMail, LuUser2, LuLock } from "react-icons/lu";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { useState } from "react";
-import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from "@react-oauth/google";
 
 import Button from "../UI/Button";
 import Input from "../UI/Input";
@@ -16,9 +16,9 @@ const LoginForm = ({ setState, addAlert }) => {
 	const [rememberMe, setRememberMe] = useState(false);
 
 	const loginWithGoogle = useGoogleLogin({
-		onSuccess: tokenResponse => console.log(tokenResponse),
-		onError: () => console.log('Login Failed'),
-	  });
+		onSuccess: (tokenResponse) => console.log(tokenResponse),
+		onError: () => console.log("Login Failed"),
+	});
 
 	const handleLogin = (e) => {
 		e.preventDefault();
@@ -26,7 +26,6 @@ const LoginForm = ({ setState, addAlert }) => {
 			addAlert("Please fill all fields", "warning");
 			return;
 		}
-
 
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
@@ -51,7 +50,7 @@ const LoginForm = ({ setState, addAlert }) => {
 						variant="outlined"
 						icon={<LuMail />}
 						value={email}
-                		onChange={(e) => setEmail(e.target.value)}
+						onChange={(e) => setEmail(e.target.value)}
 					/>
 
 					<Input
@@ -64,7 +63,7 @@ const LoginForm = ({ setState, addAlert }) => {
 						variant="outlined"
 						icon={<LuLock />}
 						value={password}
-                		onChange={(e) => setPassword(e.target.value)}
+						onChange={(e) => setPassword(e.target.value)}
 					/>
 
 					<div className="flex flex-col gap-2 mt-4">
@@ -73,7 +72,7 @@ const LoginForm = ({ setState, addAlert }) => {
 							name="remember"
 							label="Remember me"
 							checked={rememberMe}
-                			onChange={() => setRememberMe(!rememberMe)}
+							onChange={() => setRememberMe(!rememberMe)}
 						/>
 						<p className="text-sm text-slate-500">
 							Forgot your password?{" "}

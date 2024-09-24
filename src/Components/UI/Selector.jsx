@@ -32,7 +32,6 @@ function Selector({
 							name={name}
 							value={option.value}
 							className="hidden peer"
-							
 						/>
 						<label
 							htmlFor={option.id}
@@ -42,7 +41,9 @@ function Selector({
 								<div className="w-full text-lg font-semibold">
 									{option.title}
 								</div>
-								{option.content ? <p>{option.content}</p> : null}
+								{option.content ? (
+									<p>{option.content}</p>
+								) : null}
 							</div>
 							<LuMoveRight />
 						</label>

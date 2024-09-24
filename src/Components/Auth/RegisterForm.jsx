@@ -3,7 +3,7 @@ import { LuMail, LuUser2, LuLock } from "react-icons/lu";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { useState } from "react";
-import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from "@react-oauth/google";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import Divider from "../UI/Divider";
@@ -14,9 +14,9 @@ const RegisterForm = ({ setState, addAlert }) => {
 	const [name, setName] = useState("");
 
 	const signinWithGoogle = useGoogleLogin({
-		onSuccess: tokenResponse => console.log(tokenResponse),
-		onError: () => console.log('Login Failed'),
-	  });
+		onSuccess: (tokenResponse) => console.log(tokenResponse),
+		onError: () => console.log("Login Failed"),
+	});
 
 	const handleSignUp = (e) => {
 		e.preventDefault();
@@ -31,7 +31,7 @@ const RegisterForm = ({ setState, addAlert }) => {
 			addAlert("Please enter a valid email.", "warning");
 			return;
 		}
-		
+
 		addAlert("Form Submitted", "success");
 	};
 
@@ -49,7 +49,7 @@ const RegisterForm = ({ setState, addAlert }) => {
 						variant="outlined"
 						icon={<LuMail />}
 						value={email}
-                		onChange={(e) => setEmail(e.target.value)}
+						onChange={(e) => setEmail(e.target.value)}
 					/>
 
 					<Input
@@ -62,7 +62,7 @@ const RegisterForm = ({ setState, addAlert }) => {
 						variant="outlined"
 						icon={<LuLock />}
 						value={password}
-                		onChange={(e) => setPassword(e.target.value)}
+						onChange={(e) => setPassword(e.target.value)}
 					/>
 
 					<Input
@@ -74,7 +74,7 @@ const RegisterForm = ({ setState, addAlert }) => {
 						variant="outlined"
 						icon={<LuUser2 />}
 						value={name}
-                		onChange={(e) => setName(e.target.value)}
+						onChange={(e) => setName(e.target.value)}
 					/>
 				</div>
 
@@ -125,6 +125,6 @@ const RegisterForm = ({ setState, addAlert }) => {
 			</div>
 		</form>
 	);
-}
+};
 
 export default RegisterForm;
