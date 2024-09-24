@@ -59,7 +59,7 @@
 			"code": "MTH 303",
 			"module": "8",
 			"school": "SCORE",
-			"price": 110,
+			"price": "110",
 			"previews": [
 				"./images/notes.jpg",
 				"./images/notes.jpg",

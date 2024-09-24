@@ -17,7 +17,7 @@ const Header = () => {
 			setSearchActive(true);
 		} else if (searchActive && searchQuery.trim() !== "") {
 			navigate(`/notes?query=${searchQuery}`);
-			setSearchQuery("")
+			setSearchQuery("");
 			setSearchActive(false);
 		} else {
 			setSearchActive(false);

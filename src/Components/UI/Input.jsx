@@ -13,7 +13,7 @@ function Input({
 	id,
 	placeholder = "Enter a value",
 	icon = "",
-	value,
+	value = "",
 	size = "md",
 	onChange,
 }) {
@@ -73,7 +73,7 @@ function Input({
 				min={min}
 				max={max}
 				placeholder=" "
-				value={value}
+				defaultValue={value}
 				onChange={onChange}
 			/>
 			{variant != "outlined" && (

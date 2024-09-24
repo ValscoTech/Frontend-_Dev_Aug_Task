@@ -1,9 +1,24 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import { LuArrowDownRight } from "react-icons/lu";
 import Input from "../UI/Input";
 import Selector from "../UI/Selector";
 import Button from "../UI/Button";
-const SearchNotes = () => {
+function SearchNotes({
+	min = "20",
+	max = "120",
+	priceRange,
+	setPriceRange,
+	onSubmit,
+}) {
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setPriceRange((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	};
+
 	return (
 		<section className="flex flex-col w-full my-36 md:w-11/12 lg:w-5/6 xl:w-3/4 mx-auto justify-center bg-white shadow-lg rounded-3xl p-10 m-10 gap-10">
 			<h2 className="text-3xl md:text-5xl">Search Notes</h2>
@@ -16,24 +31,27 @@ const SearchNotes = () => {
 						<div className="flex gap-10 w-full">
 							<Input
 								id="minimum"
-								min={20}
-								max={120}
-								name="minimum"
+								min={min}
+								max={max}
+								value={priceRange.min}
+								name="min"
 								variant="filled"
 								type="number"
 								placeholder="Min"
 								className="w-full"
+								onChange={handleChange}
 							/>
 							<Input
-								id="
-							maximum"
-								min={20}
-								max={120}
-								name="maximum"
+								id="maximum"
+								min={min}
+								max={max}
+								value={priceRange.max}
+								name="max"
 								variant="filled"
 								type="number"
 								placeholder="Max"
 								className="w-full"
+								onChange={handleChange}
 							/>
 						</div>
 					</div>
@@ -57,12 +75,13 @@ const SearchNotes = () => {
 						]}
 					/>
 
-					<NavLink to="/notes" className="w-fit">
-						<Button className="flex justify-center items-center gap-2 !w-auto">
-							<LuArrowDownRight />
-							Search Notes
-						</Button>
-					</NavLink>
+					<Button
+						className="flex justify-center items-center gap-2 !w-fit"
+						onClick={onSubmit}
+					>
+						<LuArrowDownRight />
+						Search Notes
+					</Button>
 				</div>
 
 				<img
@@ -73,6 +92,6 @@ const SearchNotes = () => {
 			</div>
 		</section>
 	);
-};
+}
 
 export default SearchNotes;

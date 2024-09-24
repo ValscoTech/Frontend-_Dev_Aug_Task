@@ -47,7 +47,7 @@ function Offer() {
 			addAlert("Offer already exists", "warning");
 			return;
 		}
-		if (Object.values(formData).some((value) => value.trim() === "")) {
+		if (Object.values(formData).some((value) => typeof value === 'string' && value.trim() === "")) {
 			//check if all fields are filled
 			addAlert("Please fill all fields", "warning");
 			return;
@@ -59,14 +59,13 @@ function Offer() {
 
 		setFormData({
 			...formData,
-			id: toString(offers.length + 1),
+			id: (offers.length + 1).toString(), // Changed to (offers.length + 1).toString()
 			ownerId: user.id,
 			title: formData.title.trim(),
 			coursename: formData.coursename.trim(),
 			code: formData.code.trim(),
 			module: formData.module.trim(),
 			school: formData.school.trim(),
-			price: formData.price.trim(),
 			consumersId: [],
 			createdAt: new Date().toISOString(),
 		});

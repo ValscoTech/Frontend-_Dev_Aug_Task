@@ -1,19 +1,26 @@
 import { useEffect, useState, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import SearchNotes from "../Components/Hero/SearchNotes";
 import DisplaySection from "../Components/OfferNotes/DisplaySection";
 import { useNotes } from "../contexts/Notes";
 import { useUser } from "../contexts/User";
 
 function Notes() {
+	const { user } = useUser();
+	const { getAllNotesExceptOwner } = useNotes();
+	const navigate = useNavigate();
+	const [searchParams] = useSearchParams();
 	const [notes, setNotes] = useState([]);
 	const [filteredNotes, setFilteredNotes] = useState([]);
 	const [showNoNotesMessage, setShowNoNotesMessage] = useState(false);
-	const { getAllNotesExceptOwner } = useNotes();
-	const { user } = useUser();
-	const [searchParams] = useSearchParams();
 	const query = searchParams.get("query") || "";
+	const min = searchParams.get("min") || "";
+	const max = searchParams.get("max") || "";
 	const displaySectionRef = useRef(null);
+	const [priceRange, setPriceRange] = useState({
+		min: min || "20",
+		max: max || "120",
+	});
 
 	useEffect(() => {
 		document.title = "Noteswap - Search";
@@ -27,18 +34,24 @@ function Notes() {
 	}, [getAllNotesExceptOwner, user]);
 
 	useEffect(() => {
-		if (query) {
-			const filtered = notes.filter(
-				(note) =>
-					(note.title &&
-						note.title
-							.toLowerCase()
-							.includes(query.toLowerCase())) ||
-					(note.description &&
-						note.description
-							.toLowerCase()
-							.includes(query.toLowerCase())),
-			);
+		if (query || (min && max)) {
+			const filtered = query
+				? notes.filter(
+						(note) =>
+							(note.title &&
+								note.title
+									.toLowerCase()
+									.includes(query.toLowerCase())) ||
+							(note.description &&
+								note.description
+									.toLowerCase()
+									.includes(query.toLowerCase())),
+					)
+				: notes.filter(
+						(note) =>
+							parseInt(note.price) >= parseInt(min) &&
+							parseInt(note.price) <= parseInt(max),
+					);
 			setFilteredNotes(filtered);
 
 			if (filtered.length === 0) {
@@ -51,15 +64,29 @@ function Notes() {
 					behavior: "smooth",
 				});
 			}
+		} else if (min && max) {
+			console.log(min, max);
 		} else {
 			setFilteredNotes(notes);
 			setShowNoNotesMessage(false);
 		}
-	}, [notes, query]);
+	}, [notes, setNotes, min, max, query]);
+
+	const handleSubmit = () => {
+		if (priceRange.min < 20 || priceRange.max > 120) {
+			console.log("Out of Range error");
+			return;
+		}
+		navigate(`/notes?min=${priceRange.min}&max=${priceRange.max}`);
+	};
 
 	return (
 		<div className="container mx-auto p-5">
-			<SearchNotes />
+			<SearchNotes
+				priceRange={priceRange}
+				setPriceRange={setPriceRange}
+				onSubmit={handleSubmit}
+			/>
 			{showNoNotesMessage && (
 				<p className="text-red-500 text-center text-2xl flex items-center justify-center">
 					<svg

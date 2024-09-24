@@ -27,7 +27,7 @@ function DisplayProfile({ userInfo, setIsEdit }) {
 					Edit
 				</Button>
 				<button
-					className="hover:text-gray-500 active:scale-90"
+					className="hover:text-gray-500 dark:hover:text-gray-300 active:scale-90"
 					onClick={changeTheme}
 				>
 					<LuSunMedium size={30} />
