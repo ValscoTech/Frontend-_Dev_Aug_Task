@@ -8,7 +8,7 @@ function AvatarChooser({ image }) {
 			<input type="file" className="hidden" />
 
 			<div className="w-full">
-				<div className="relative p-1 bg-gray-500 dark:bg-gray-100 rounded-full mx-auto w-64 h-64 md:w-96 md:h-96 m-auto shadow">
+				<div className="relative p-1 bg-gray-200 dark:bg-gray-100 rounded-full mx-auto w-64 h-64 md:w-96 md:h-96 m-auto shadow">
 					{image !== "" ? (
 						<img
 							src={image}

@@ -35,7 +35,7 @@ function DisplayProfile({ userInfo, setIsEdit }) {
 			</div>
 			<div className="flex flex-col lg:flex-row gap-10 justify-center items-center">
 				<div className="flex flex-col gap-5 w-full lg:w-1/2 py-10">
-					<div className="relative p-1 bg-gray-500 dark:bg-gray-100 rounded-full mx-auto w-64 h-64 md:w-96 md:h-96 m-auto shadow">
+					<div className="relative p-1 bg-gray-300 dark:bg-gray-100 rounded-full mx-auto w-64 h-64 md:w-96 md:h-96 m-auto shadow">
 						{userInfo && userInfo.profile !== "" ? (
 							<img
 								src={userInfo.profile}
