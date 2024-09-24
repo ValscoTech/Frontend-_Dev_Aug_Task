@@ -48,12 +48,16 @@ function Auth() {
 	};
 
 	const handleFBAuth = async () => {
+		if (!isFacebookReady) {
+			addAlert("Facebook SDK is not ready yet", "error");
+			return; // Exit if Facebook is not ready
+		}
 		const response = await facebook.login();
 		if (response.status === "unknown") {
-			addAlert("Failed to autorize user", "error");
+			addAlert("Failed to authorize user", "error");
 		} else {
 			addAlert(
-				"Authorization through facebook was successful",
+				"Authorization through Facebook was successful",
 				"success",
 			);
 		}
