@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ className, theme = "default", children, size = "md" }) {
+function Card({ className, theme = "default", children, size = "md", onClick = null }) {
 	const styles = {
 		primary: "bg-primary-light dark:bg-primary-dark border-primary-light",
 		secondary:
@@ -17,7 +17,7 @@ function Card({ className, theme = "default", children, size = "md" }) {
 
 	return (
 		<div
-			className={`max-w-sm w-full h-full border rounded-lg shadow p-4 ${styles[theme]} ${styles[size]} ${className}`}
+			className={`max-w-sm w-full h-full border rounded-lg shadow p-4 ${styles[theme]} ${styles[size]} ${className}`} onClick={onClick}
 		>
 			{children}
 		</div>

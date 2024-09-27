@@ -24,7 +24,11 @@ const Home = () => {
 			if (user && user.id) {
 				try {
 					const fetchedNotes = await getNotesByUserId(user.id);
-					setNotes(fetchedNotes.slice(0, 8));
+					const updatedNotes = await fetchedNotes.map((note) => ({
+						...note,
+						onClick: () => handleRentNote(note),
+					}));
+					setNotes(updatedNotes.slice(0, 8));
 				} catch (error) {
 					console.error("Error fetching notes:", error);
 				}
@@ -34,21 +38,28 @@ const Home = () => {
 		window.scrollTo(0, 0);
 	}, [user, getNotesByUserId]);
 
-
 	const handleSubmit = () => {
 		if (priceRange.min < 20 || priceRange.max > 120) {
 			console.log("Out of Range error");
 			return;
 		}
 		navigate(`/notes?min=${priceRange.min}&max=${priceRange.max}`);
- 	};
+	};
+
+	const handleRentNote = (note) => {
+		navigate(`/rent?id=${note.id}`);
+	};
 
 	return (
 		<div className="container mx-auto p-5">
 			<Hero />
 			<AppPromotion />
 			<DisplaySection data={notes} />
-			<SearchNotes priceRange={priceRange} setPriceRange={setPriceRange} onSubmit={handleSubmit} />
+			<SearchNotes
+				priceRange={priceRange}
+				setPriceRange={setPriceRange}
+				onSubmit={handleSubmit}
+			/>
 		</div>
 	);
 };

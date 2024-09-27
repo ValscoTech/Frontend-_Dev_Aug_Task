@@ -21,6 +21,15 @@ export const NotesProvider = ({ children }) => {
 		return filteredNotes;
 	};
 
+	const getNoteById = async (id) => {
+		const response = await fetch(`./data/notes.json`);
+		const data = await response.json();
+		const filteredNotes = data.notes.filter((note) => {
+			return note.id == id;
+		});
+		return filteredNotes;
+	};
+
 	const getAllNotesExceptOwner = async (userId) => {
 		const response = await fetch(`./data/notes.json`);
 		const data = await response.json();
@@ -36,6 +45,7 @@ export const NotesProvider = ({ children }) => {
 				getNotesByUserId,
 				getRentNotesByUserId,
 				getAllNotesExceptOwner,
+				getNoteById
 			}}
 		>
 			{children}

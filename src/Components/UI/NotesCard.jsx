@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-function NotesCard({ note, theme = "default" }) {
+function NotesCard({ note, theme = "default", onClick = null }) {
 	const styles = {
 		default: "bg-white",
 		primary: "bg-primary-light",
@@ -10,9 +10,10 @@ function NotesCard({ note, theme = "default" }) {
 	};
 	return (
 		<Card
-			className="duration-300 flex flex-col justify-between gap-3"
+			className={`duration-300 flex flex-col justify-between gap-3 ${onClick ? "cursor-pointer hover:opacity-75 active:scale-105" : null}`}
 			size="sm"
 			theme={theme}
+			onClick={onClick}
 		>
 			<div className="flex flex-col gap-2 justify-end ">
 				<div className="flex items-center gap-5">

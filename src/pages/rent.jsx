@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNotes } from "../contexts/Notes";
 import { useUser } from "../contexts/User";
-import { LuXCircle } from "react-icons/lu";
+import { useSearchParams } from "react-router-dom";
 import Calender from "../Components/UI/Calender";
 import DisplaySection from "../Components/OfferNotes/DisplaySection";
 import Button from "../Components/UI/Button";
@@ -13,21 +13,31 @@ function Rent({
 	preview = "./images/notes.jpg",
 }) {
 	const { user } = useUser();
-	const { getRentNotesByUserId } = useNotes();
+	const { getRentNotesByUserId, getNoteById } = useNotes();
+	const [searchParams] = useSearchParams();
+	const id = searchParams.get("id");
+	const [displayNote, setDisplayNote] = useState({});
 	const [notes, setNotes] = useState([]);
 	const [zoomedImage, setZoomedImage] = useState(null);
 
 	useEffect(() => {
 		document.title = "Noteswap - Rent";
-		
+
+		if (id) {
+			const fetchNote = async () => {
+				const note = await getNoteById(id);
+				setDisplayNote(note[0]);
+			}
+			fetchNote();
+		}
+
 		const fetchNotes = async () => {
 			const fetchedNotes = await getRentNotesByUserId(user.id);
 			setNotes(fetchedNotes);
 		};
-
 		fetchNotes();
 		window.scrollTo(0, 0);
-	}, [user, getRentNotesByUserId]);
+	}, [user, setNotes, setDisplayNote, getNoteById, getRentNotesByUserId]);
 
 	const handleImageClick = (image) => {
 		setZoomedImage(image);
@@ -45,9 +55,9 @@ function Rent({
 			<div className="flex flex-col w-full xl:flex-row justify-center items-center my-16">
 				<div className="flex justify-center my-10 w-full xl:w-1/2">
 					<div className="text-slate-700 dark:text-slate-300 *:text-xl *:py-3">
-						<p>Title: {title}</p>
-						<p>Code: {code}</p>
-						<p>Price per module: {price}Rs</p>
+						<p>Title: {displayNote?.title || title}</p>
+						<p>Code: {displayNote?.code || code}</p>
+						<p>Price per module: {displayNote?.price || price}Rs</p>
 						<p>Preview:</p>
 						<div className="flex -space-x-28 sm:-space-x-36 md:-space-x-56 p-3 bg-slate-400 rounded-xl *:border *:border-slate-700 *:rounded-lg *:z-10 duration-300 *:transition-all *:cursor-pointer *:active:scale-100">
 							{[1, 2, 3, 4, 5].map((index) => (

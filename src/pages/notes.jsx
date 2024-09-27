@@ -27,11 +27,15 @@ function Notes() {
 
 		const fetchNotes = async () => {
 			const fetchedNotes = await getAllNotesExceptOwner(user.id);
-			setNotes(fetchedNotes);
+			const updatedNotes = await fetchedNotes.map((note) => ({
+				...note,
+				"onClick": () => handleRentNote(note)
+			}));
+			setNotes(updatedNotes);
 		};
 		fetchNotes();
 		window.scrollTo(0, 0);
-	}, [getAllNotesExceptOwner, user]);
+	}, [setNotes, getAllNotesExceptOwner, user]);
 
 	useEffect(() => {
 		if (query || (min && max)) {
@@ -59,17 +63,19 @@ function Notes() {
 			} else {
 				setShowNoNotesMessage(false);
 			}
+
 			if (displaySectionRef.current) {
 				displaySectionRef.current.scrollIntoView({
 					behavior: "smooth",
 				});
 			}
-		} else if (min && max) {
-			console.log(min, max);
 		} else {
 			setFilteredNotes(notes);
 			setShowNoNotesMessage(false);
 		}
+
+		console.log("NOTES", filteredNotes)
+
 	}, [notes, setNotes, min, max, query]);
 
 	const handleSubmit = () => {
@@ -78,6 +84,10 @@ function Notes() {
 			return;
 		}
 		navigate(`/notes?min=${priceRange.min}&max=${priceRange.max}`);
+	};
+
+	const handleRentNote = (note) => {
+		navigate(`/rent?id=${note.id}`);
 	};
 
 	return (
